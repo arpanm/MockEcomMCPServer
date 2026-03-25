@@ -42,6 +42,7 @@ public class AuthService {
         return sessionRepository.save(session);
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Session validateSession(String sessionId) {
         UUID sid;
         try { sid = UUID.fromString(sessionId); }
@@ -50,6 +51,7 @@ public class AuthService {
             .orElseThrow(() -> new IllegalArgumentException("Session not found or expired. Please login again."));
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Customer getCustomerFromSession(String sessionId) {
         return validateSession(sessionId).getCustomer();
     }

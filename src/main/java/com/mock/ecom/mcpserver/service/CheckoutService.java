@@ -20,6 +20,7 @@ public class CheckoutService {
     private final AddressService addressService;
     private final AuthService authService;
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Checkout getCheckout(UUID checkoutId, String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return checkoutRepository.findById(checkoutId)

@@ -170,12 +170,10 @@ public class MockDataGeneratorService {
 
     public Product getOrCreateProduct(String searchKey, String query) {
         return productRepository.findBySearchKey(searchKey).orElseGet(() -> {
-            Product p = generateProduct(searchKey, query);
-            p = productRepository.save(p);
-            List<ProductAttribute> attrs = generateAttributes(p.getCategory(), p);
-            attrs.forEach(a -> a.setProduct(p));
+            Product saved = productRepository.save(generateProduct(searchKey, query));
+            List<ProductAttribute> attrs = generateAttributes(saved.getCategory(), saved);
             productAttributeRepository.saveAll(attrs);
-            return p;
+            return saved;
         });
     }
 
@@ -183,8 +181,9 @@ public class MockDataGeneratorService {
         List<Product> products = new ArrayList<>();
         String base = normalizeSearchKey(query);
         for (int i = 0; i < count; i++) {
-            String key = base + (i == 0 ? "" : "_v" + i);
-            products.add(productRepository.findBySearchKey(key).orElseGet(() -> generateProduct(key, query + (i > 0 ? " variant " + i : ""))));
+            final int idx = i;
+            final String key = base + (idx == 0 ? "" : "_v" + idx);
+            products.add(productRepository.findBySearchKey(key).orElseGet(() -> generateProduct(key, query + (idx > 0 ? " variant " + idx : ""))));
         }
         saveProductsAsync(products);
         return products;

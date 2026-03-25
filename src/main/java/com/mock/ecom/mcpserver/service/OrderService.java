@@ -22,6 +22,7 @@ public class OrderService {
     private final ShipmentRepository shipmentRepository;
     private final AuthService authService;
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Order getOrderDetails(String orderId, String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return orderRepository.findById(UUID.fromString(orderId))
@@ -29,11 +30,13 @@ public class OrderService {
             .orElseThrow(() -> new IllegalArgumentException("Order not found"));
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Page<Order> getOrders(String sessionId, int page, int pageSize) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return orderRepository.findByCustomerOrderByCreatedAtDesc(customer, PageRequest.of(page, pageSize));
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Page<Shipment> getShipments(String sessionId, int page, int pageSize) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return shipmentRepository.findByCustomer(customer, PageRequest.of(page, pageSize));
@@ -84,10 +87,12 @@ public class OrderService {
         return otp;
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public List<OrderItem> getOrderItems(Order order) {
         return orderItemRepository.findByOrder(order);
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public List<Shipment> getOrderShipments(Order order) {
         return shipmentRepository.findByOrder(order);
     }

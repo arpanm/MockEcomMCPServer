@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public class CartTools {
     private final ToolResponseHelper helper;
 
     @Tool(description = "Add a product to the customer's shopping cart. Requires a valid sessionId obtained from serverToServerLogin. Provide product ID and quantity. If product already in cart, increases quantity. Returns updated cart with all items, quantities, unit prices, and total amount. First call serverToServerLogin to get sessionId.")
+    @Transactional(noRollbackFor = Exception.class)
     public String addToCart(String productId, Integer quantity, String sessionId) {
         try {
             log.info("[Tool] addToCart productId={} qty={} session={}", productId, quantity, sessionId);

@@ -22,11 +22,13 @@ public class TicketService {
     private final OrderItemRepository orderItemRepository;
     private final AuthService authService;
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Page<Ticket> getTickets(String sessionId, int page, int pageSize) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return ticketRepository.findByCustomerOrderByCreatedAtDesc(customer, PageRequest.of(page, pageSize));
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Ticket getTicketDetails(String ticketId, String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return ticketRepository.findById(UUID.fromString(ticketId))

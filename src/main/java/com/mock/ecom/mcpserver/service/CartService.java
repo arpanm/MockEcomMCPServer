@@ -21,7 +21,7 @@ public class CartService {
     private final AuthService authService;
     private final ProductService productService;
 
-    @Transactional
+    @Transactional(noRollbackFor = {IllegalArgumentException.class})
     public Cart addToCart(String productId, int quantity, String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         Product product = productService.getProductById(UUID.fromString(productId));

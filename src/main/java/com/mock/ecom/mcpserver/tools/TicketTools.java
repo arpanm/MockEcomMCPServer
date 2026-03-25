@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public class TicketTools {
     private final ToolResponseHelper helper;
 
     @Tool(description = "Get paginated list of all customer support tickets for the authenticated user. Returns ticket list with ID, subject, type, priority, status, and dates. Ticket types: DELIVERY_ISSUE, RETURN_REQUEST, PAYMENT_ISSUE, PRODUCT_QUALITY, CANCELLATION, OTHER. Requires valid sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getTickets(String sessionId, Integer page, Integer pageSize) {
         try {
             log.info("[Tool] getTickets session={}", sessionId);
@@ -42,6 +44,7 @@ public class TicketTools {
     }
 
     @Tool(description = "Get complete details of a specific support ticket including full description, all comments and responses from support agents, current status, and resolution. Provide ticketId (from getTickets) and sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getTicketDetails(String ticketId, String sessionId) {
         try {
             log.info("[Tool] getTicketDetails ticketId={} session={}", ticketId, sessionId);

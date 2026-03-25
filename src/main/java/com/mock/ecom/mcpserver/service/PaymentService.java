@@ -51,6 +51,7 @@ public class PaymentService {
         return payment;
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Map<String, Object> getPaymentStatus(String paymentId, String sessionId) {
         authService.validateSession(sessionId);
         Payment payment = paymentRepository.findById(UUID.fromString(paymentId))

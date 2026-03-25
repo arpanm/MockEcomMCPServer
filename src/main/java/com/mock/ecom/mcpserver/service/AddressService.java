@@ -19,6 +19,7 @@ public class AddressService {
     private final AddressRepository addressRepository;
     private final AuthService authService;
 
+    @Transactional
     public List<Address> getAddresses(String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         List<Address> existing = addressRepository.findByCustomer(customer);
@@ -56,6 +57,7 @@ public class AddressService {
         return List.of(home, work);
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Address getAddress(UUID addressId, String sessionId) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return addressRepository.findById(addressId)

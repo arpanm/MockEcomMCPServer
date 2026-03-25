@@ -30,6 +30,7 @@ public class WishlistService {
                 .customer(customer).product(product).addedAt(LocalDateTime.now()).build()));
     }
 
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public Page<WishlistItem> getWishlist(String sessionId, int page, int pageSize) {
         Customer customer = authService.getCustomerFromSession(sessionId);
         return wishlistItemRepository.findByCustomerOrderByAddedAtDesc(customer, PageRequest.of(page, pageSize));

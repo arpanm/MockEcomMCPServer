@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ public class OrderTools {
     private final ToolResponseHelper helper;
 
     @Tool(description = "Get complete order details including order status, all order items with product info and individual item statuses, plus list of shipments with tracking numbers, carrier info, and delivery status. Use orderId from initiatePayment or getOrders response. Requires valid sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getOrderDetails(String orderId, String sessionId) {
         try {
             log.info("[Tool] getOrderDetails orderId={} session={}", orderId, sessionId);
@@ -63,6 +65,7 @@ public class OrderTools {
     }
 
     @Tool(description = "Get paginated list of all orders for the authenticated customer. Returns order summaries with order number, date, total amount, status, and item count. Use page (0-based) and pageSize to paginate. Requires valid sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getOrders(String sessionId, Integer page, Integer pageSize) {
         try {
             log.info("[Tool] getOrders session={} page={}", sessionId, page);
@@ -91,6 +94,7 @@ public class OrderTools {
     }
 
     @Tool(description = "Get paginated list of all shipments for the authenticated customer across all orders. Returns shipment details with tracking number, carrier, status, estimated delivery date, and delivery pincode. Requires valid sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getShipments(String sessionId, Integer page, Integer pageSize) {
         try {
             log.info("[Tool] getShipments session={}", sessionId);

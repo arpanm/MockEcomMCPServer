@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -43,6 +44,7 @@ public class WishlistTools {
     }
 
     @Tool(description = "Get paginated list of all products in the customer's wishlist. Returns wishlist items with full product details including current price, MRP, discount, availability status, and when the item was added. Requires valid sessionId.")
+    @Transactional(readOnly = true, noRollbackFor = Exception.class)
     public String getWishlist(String sessionId, Integer page, Integer pageSize) {
         try {
             log.info("[Tool] getWishlist session={} page={}", sessionId, page);
