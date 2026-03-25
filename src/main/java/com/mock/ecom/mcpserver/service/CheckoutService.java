@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -41,7 +42,7 @@ public class CheckoutService {
     private BigDecimal calculateDelivery(String pincode, BigDecimal orderTotal) {
         if (orderTotal.compareTo(BigDecimal.valueOf(499)) >= 0) return BigDecimal.ZERO;
         String prefix = pincode != null && pincode.length() >= 3 ? pincode.substring(0, 3) : "999";
-        Set<String> metro = Set.of("110","400","560","600","700","500");
+        Set<String> metro = Set.of("110", "400", "560", "600", "700", "500");
         return metro.contains(prefix) ? BigDecimal.valueOf(29) : BigDecimal.valueOf(49);
     }
 }
