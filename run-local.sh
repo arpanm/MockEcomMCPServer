@@ -21,12 +21,67 @@ warn()    { echo -e "${YELLOW}[WARN]${NC}  $*"; }
 error()   { echo -e "${RED}[ERROR]${NC} $*" >&2; exit 1; }
 
 # ---------- dependency checks -------------------------------------------------
-for cmd in java mvn; do
-  command -v "$cmd" &>/dev/null || error "$cmd is not installed or not on PATH."
+for cmd in mvn; do
+  command -v "$cmd" &>/dev/null || error "mvn is not installed or not on PATH."
 done
+command -v java &>/dev/null || error "java is not installed or not on PATH."
 
+# ---------- JDK version check + auto-switch to JDK 21 ------------------------
 JAVA_VER=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d. -f1)
-[[ "$JAVA_VER" -ge 21 ]] 2>/dev/null || warn "Java 21+ is recommended (found: $(java -version 2>&1 | head -1))"
+
+if [[ "$JAVA_VER" -ne 21 ]] 2>/dev/null; then
+  warn "Active Java version is $JAVA_VER (found: $(java -version 2>&1 | head -1))."
+  warn "This project requires Java 21 due to Lombok compatibility. Searching for JDK 21…"
+
+  # Try macOS java_home selector
+  if command -v /usr/libexec/java_home &>/dev/null; then
+    JDK21=$(/usr/libexec/java_home -v 21 2>/dev/null || true)
+    if [[ -n "$JDK21" ]]; then
+      export JAVA_HOME="$JDK21"
+      export PATH="$JAVA_HOME/bin:$PATH"
+      info "Switched to JDK 21 via java_home: $JAVA_HOME"
+    fi
+  fi
+
+  # Try SDKMAN
+  if [[ -z "${JAVA_HOME:-}" ]] && [[ -d "${HOME}/.sdkman/candidates/java" ]]; then
+    JDK21=$(find "${HOME}/.sdkman/candidates/java" -maxdepth 1 -type d -name "21*" 2>/dev/null | sort -V | tail -1)
+    if [[ -n "$JDK21" ]]; then
+      export JAVA_HOME="$JDK21"
+      export PATH="$JAVA_HOME/bin:$PATH"
+      info "Switched to JDK 21 via SDKMAN: $JAVA_HOME"
+    fi
+  fi
+
+  # Try common Linux JVM paths
+  if [[ -z "${JAVA_HOME:-}" ]]; then
+    for candidate in \
+        /usr/lib/jvm/java-21-openjdk-amd64 \
+        /usr/lib/jvm/java-21-openjdk \
+        /usr/lib/jvm/temurin-21 \
+        /usr/local/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home; do
+      if [[ -x "$candidate/bin/java" ]]; then
+        export JAVA_HOME="$candidate"
+        export PATH="$JAVA_HOME/bin:$PATH"
+        info "Switched to JDK 21: $JAVA_HOME"
+        break
+      fi
+    done
+  fi
+
+  # Re-check after attempting to switch
+  JAVA_VER=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d. -f1)
+  if [[ "$JAVA_VER" -ne 21 ]] 2>/dev/null; then
+    warn "Could not automatically switch to JDK 21."
+    warn "Install JDK 21 (e.g. 'sdk install java 21-tem' or 'brew install openjdk@21')"
+    warn "then re-run with: JAVA_HOME=\$(/usr/libexec/java_home -v 21) ./run-local.sh"
+    warn "Proceeding with Java $JAVA_VER — build may fail with Lombok."
+  else
+    success "Now using Java $JAVA_VER at $JAVA_HOME"
+  fi
+else
+  success "Java $JAVA_VER detected — OK."
+fi
 
 # ---------- port finder -------------------------------------------------------
 find_free_port() {
