@@ -38,9 +38,11 @@ fi
 find_free_port() {
   local port=$1
   while [[ $port -le $MAX_PORT ]]; do
-    if ! (echo >/dev/tcp/127.0.0.1/$port) 2>/dev/null; then
-      echo "$port"
-      return
+    # nc -z works on both macOS and Linux; falls back to /dev/tcp if nc absent
+    if command -v nc &>/dev/null; then
+      nc -z 127.0.0.1 "$port" 2>/dev/null || { echo "$port"; return; }
+    else
+      (echo >/dev/tcp/127.0.0.1/$port) 2>/dev/null || { echo "$port"; return; }
     fi
     (( port++ ))
   done
