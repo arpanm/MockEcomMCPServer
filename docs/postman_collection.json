@@ -1,0 +1,614 @@
+{
+  "info": {
+    "name": "Mock Ecommerce MCP Server",
+    "description": "Complete collection for all 28 MCP tools.\n\n## Setup\n1. Set `baseUrl` variable to your server (default: http://localhost:8080)\n2. Run 'Auth - Server Login' first, copy the sessionId into the `sessionId` variable\n3. Execute requests in order or jump to any tool\n\n## MCP Protocol\nAll tool calls use JSON-RPC 2.0 format posted to POST /mcp/message.\nYou must first establish an SSE connection to GET /sse to get a valid session endpoint.\n\n## Quick test (no MCP client)\nThe /actuator/health and /h2-console endpoints can be tested directly.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    { "key": "baseUrl",   "value": "http://localhost:8080", "type": "string" },
+    { "key": "sessionId", "value": "",                      "type": "string" },
+    { "key": "productId", "value": "",                      "type": "string" },
+    { "key": "cartId",    "value": "",                      "type": "string" },
+    { "key": "checkoutId","value": "",                      "type": "string" },
+    { "key": "addressId", "value": "",                      "type": "string" },
+    { "key": "paymentId", "value": "",                      "type": "string" },
+    { "key": "orderId",   "value": "",                      "type": "string" },
+    { "key": "shipmentId","value": "",                      "type": "string" },
+    { "key": "ticketId",  "value": "",                      "type": "string" },
+    { "key": "mcpId",     "value": "1",                     "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Infrastructure",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/actuator/health",
+            "description": "Liveness/readiness probe. Returns {\"status\":\"UP\"} when ready."
+          }
+        },
+        {
+          "name": "MCP SSE Connect",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/sse",
+            "description": "Establish SSE connection. The server streams back an 'endpoint' event containing the session-specific POST URL for tool calls. Keep this connection open while using the server.",
+            "header": [{ "key": "Accept", "value": "text/event-stream" }]
+          }
+        },
+        {
+          "name": "MCP Tools List",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "List all 28 available tools with their descriptions and parameter schemas.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/list\",\n  \"params\": {}\n}"
+            }
+          }
+        },
+        {
+          "name": "MCP Initialize",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "MCP protocol handshake.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"initialize\",\n  \"params\": {\n    \"protocolVersion\": \"2024-11-05\",\n    \"capabilities\": { \"roots\": { \"listChanged\": true } },\n    \"clientInfo\": { \"name\": \"postman-test\", \"version\": \"1.0.0\" }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "H2 Console (dev only)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/h2-console",
+            "description": "H2 browser console. JDBC URL: jdbc:h2:mem:mockecomdb, User: sa, Password: (empty)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "1-7 · Product Discovery (No Auth)",
+      "item": [
+        {
+          "name": "1. searchProducts",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Full-text keyword search across all 5 categories. Generates mock products on demand if none found.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"searchProducts\",\n    \"arguments\": {\n      \"query\": \"laptop\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "2. filterProducts",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Filter products by category, subcategory, or brand. All filters are optional.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"filterProducts\",\n    \"arguments\": {\n      \"query\": \"phone\",\n      \"category\": \"ELECTRONICS\",\n      \"subCategory\": \"\",\n      \"brand\": \"\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "3. getFilters",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Get available filter facets (categories, subcategories, brands) with item counts.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getFilters\",\n    \"arguments\": {\n      \"query\": \"shirt\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "4. getSortOptions",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Returns 6 sort options: price_asc, price_desc, rating_desc, newest, popularity, delivery_asc.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getSortOptions\",\n    \"arguments\": {\n      \"query\": \"rice\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "5. getProductDetails",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Full product: title, brand, price, MRP, rating, attributes, images. Get productId from searchProducts.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getProductDetails\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "6. getProductReviews",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Rating summary (1-5 star distribution) + paginated review list.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getProductReviews\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\",\n      \"page\": 0,\n      \"pageSize\": 5\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "7. getDeliveryTime",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Delivery estimate for a product to a pincode. Returns expected delivery date range.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getDeliveryTime\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\",\n      \"pincode\": \"560001\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "8 · Authentication",
+      "item": [
+        {
+          "name": "8. serverToServerLogin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var body = pm.response.json();",
+                  "if (body.result && body.result.content && body.result.content[0]) {",
+                  "  try {",
+                  "    var data = JSON.parse(body.result.content[0].text);",
+                  "    if (data.sessionId) pm.collectionVariables.set('sessionId', data.sessionId);",
+                  "    if (data.customerId) pm.collectionVariables.set('customerId', data.customerId);",
+                  "    console.log('sessionId set:', data.sessionId);",
+                  "  } catch(e) {}",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Get a sessionId using phone + platform secret. The test script auto-saves sessionId to collection variable.\n\nPhone: any 10-digit number\nPlatform: any string (e.g. WEB, APP, IOS)\nSecret: mock-platform-secret-key",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"serverToServerLogin\",\n    \"arguments\": {\n      \"phoneNumber\": \"9876543210\",\n      \"platform\": \"WEB\",\n      \"secret\": \"mock-platform-secret-key\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "9-10 · Cart",
+      "item": [
+        {
+          "name": "9. addToCart",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Add a product to the active cart. Creates cart if none exists. Requires sessionId.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"addToCart\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\",\n      \"quantity\": 2,\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "10. checkout",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Convert an active cart to a checkout. Returns checkoutId and grand total.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"checkout\",\n    \"arguments\": {\n      \"cartId\": \"{{cartId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "11-12 · Address",
+      "item": [
+        {
+          "name": "11. getAddresses",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "List all saved delivery addresses for the authenticated customer.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getAddresses\",\n    \"arguments\": {\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "12. selectAddress",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Attach a delivery address to a checkout. Use addressId from getAddresses.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"selectAddress\",\n    \"arguments\": {\n      \"checkoutId\": \"{{checkoutId}}\",\n      \"addressId\": \"{{addressId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "13-14 · Payment",
+      "item": [
+        {
+          "name": "13. initiatePayment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Initiate payment for a checkout. Automatically creates the Order on success.\n\nMethods: UPI | CARD | COD | NETBANKING | WALLET",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"initiatePayment\",\n    \"arguments\": {\n      \"checkoutId\": \"{{checkoutId}}\",\n      \"paymentMethod\": \"UPI\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "14. getPaymentStatus",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Check payment status. Returns: PENDING | PROCESSING | SUCCESS | FAILED | REFUNDED.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getPaymentStatus\",\n    \"arguments\": {\n      \"paymentId\": \"{{paymentId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "15-19 · Orders",
+      "item": [
+        {
+          "name": "15. getOrderDetails",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Full order details: items, statuses, shipment info.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getOrderDetails\",\n    \"arguments\": {\n      \"orderId\": \"{{orderId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "16. getOrders",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Paginated order history for the authenticated customer.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getOrders\",\n    \"arguments\": {\n      \"sessionId\": \"{{sessionId}}\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "17. getShipments",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Paginated shipment list with tracking numbers and carrier info.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getShipments\",\n    \"arguments\": {\n      \"sessionId\": \"{{sessionId}}\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "18. cancelOrder",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Cancel an entire order or a specific item. Leave itemId empty to cancel the whole order.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"cancelOrder\",\n    \"arguments\": {\n      \"orderId\": \"{{orderId}}\",\n      \"itemId\": \"\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "19. returnOrderItem",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Initiate a return for a delivered order item. Item status changes to RETURN_INITIATED.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"returnOrderItem\",\n    \"arguments\": {\n      \"orderItemId\": \"{{orderItemId}}\",\n      \"reason\": \"Product defective\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "20 · Shipment",
+      "item": [
+        {
+          "name": "20. sendDeliveryOtp",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Generate and send a delivery OTP for a shipment (mock — OTP is stored, not actually sent).",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"sendDeliveryOtp\",\n    \"arguments\": {\n      \"shipmentId\": \"{{shipmentId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "21-24 · Support Tickets",
+      "item": [
+        {
+          "name": "21. getTickets",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Paginated list of support tickets for the authenticated customer.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getTickets\",\n    \"arguments\": {\n      \"sessionId\": \"{{sessionId}}\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "22. getTicketDetails",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Full ticket details with complete threaded comment history.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getTicketDetails\",\n    \"arguments\": {\n      \"ticketId\": \"{{ticketId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "23. addTicketComment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Add a customer comment to an existing ticket.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"addTicketComment\",\n    \"arguments\": {\n      \"ticketId\": \"{{ticketId}}\",\n      \"comment\": \"Still waiting for resolution, please update.\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "24. createTicket",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Create a new support ticket.\n\nTypes: DELIVERY_ISSUE | RETURN_REQUEST | PAYMENT_ISSUE | PRODUCT_QUALITY | CANCELLATION | OTHER",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"createTicket\",\n    \"arguments\": {\n      \"subject\": \"Item not delivered\",\n      \"description\": \"My order was expected yesterday but has not arrived.\",\n      \"type\": \"DELIVERY_ISSUE\",\n      \"orderId\": \"{{orderId}}\",\n      \"orderItemId\": \"\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "25-26 · Reviews",
+      "item": [
+        {
+          "name": "25. submitProductReview",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Rate and review a product (1-5 stars). Automatically marks as verified purchase if the customer has ordered the product.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"submitProductReview\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\",\n      \"rating\": 4,\n      \"title\": \"Great product\",\n      \"description\": \"Works exactly as described, fast delivery.\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "26. submitShipmentReview",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Rate the delivery experience for a shipment (1-5 stars).",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"submitShipmentReview\",\n    \"arguments\": {\n      \"shipmentId\": \"{{shipmentId}}\",\n      \"rating\": 5,\n      \"title\": \"Fast delivery\",\n      \"description\": \"Delivered a day early, well packaged.\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "27-28 · Wishlist",
+      "item": [
+        {
+          "name": "27. addToWishlist",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Add a product to wishlist. Safe to call multiple times — duplicate entries are prevented.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"addToWishlist\",\n    \"arguments\": {\n      \"productId\": \"{{productId}}\",\n      \"sessionId\": \"{{sessionId}}\"\n    }\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "28. getWishlist",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "description": "Get paginated wishlist with full product details for each item.",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": {{mcpId}},\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"getWishlist\",\n    \"arguments\": {\n      \"sessionId\": \"{{sessionId}}\",\n      \"page\": 0,\n      \"pageSize\": 10\n    }\n  }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "End-to-End Flow",
+      "description": "Run these in order for a complete shopping journey",
+      "item": [
+        {
+          "name": "Step 1 · Login",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"serverToServerLogin\",\n    \"arguments\": { \"phoneNumber\": \"9876543210\", \"platform\": \"WEB\", \"secret\": \"mock-platform-secret-key\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 2 · Search",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"searchProducts\",\n    \"arguments\": { \"query\": \"laptop\", \"page\": 0, \"pageSize\": 5 } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 3 · Add to Cart",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 3, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"addToCart\",\n    \"arguments\": { \"productId\": \"{{productId}}\", \"quantity\": 1, \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 4 · Checkout",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 4, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"checkout\",\n    \"arguments\": { \"cartId\": \"{{cartId}}\", \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 5 · Get Addresses",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 5, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"getAddresses\",\n    \"arguments\": { \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 6 · Select Address",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 6, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"selectAddress\",\n    \"arguments\": { \"checkoutId\": \"{{checkoutId}}\", \"addressId\": \"{{addressId}}\", \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 7 · Pay (UPI)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 7, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"initiatePayment\",\n    \"arguments\": { \"checkoutId\": \"{{checkoutId}}\", \"paymentMethod\": \"UPI\", \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        },
+        {
+          "name": "Step 8 · View Order",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mcp/message",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\", \"id\": 8, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"getOrderDetails\",\n    \"arguments\": { \"orderId\": \"{{orderId}}\", \"sessionId\": \"{{sessionId}}\" } }\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,895 @@
+openapi: 3.0.3
+info:
+  title: Mock Ecommerce MCP Server
+  version: 1.0.0
+  description: |
+    A general-purpose **Mock MCP (Model Context Protocol) Server** for AI chatbot ecommerce integrations.
+
+    ## How to use
+    1. Connect an MCP client to `GET /sse` (SSE transport)
+    2. Authenticate: call `serverToServerLogin` to get a `sessionId`
+    3. Use `sessionId` in all cart / order / payment tool calls
+
+    ## Authentication
+    Platform secret (mock): `mock-platform-secret-key`
+
+    ## MCP JSON-RPC format
+    All 28 tools are invoked via `POST /mcp/message` using JSON-RPC 2.0:
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/call",
+      "params": {
+        "name": "<toolName>",
+        "arguments": { ... }
+      }
+    }
+    ```
+
+    ## Tool categories
+    | Category | Tools |
+    |----------|-------|
+    | Product Discovery | searchProducts, filterProducts, getFilters, getSortOptions |
+    | Product Details | getProductDetails, getProductReviews |
+    | Delivery | getDeliveryTime |
+    | Authentication | serverToServerLogin |
+    | Cart | addToCart, checkout |
+    | Address | getAddresses, selectAddress |
+    | Payment | initiatePayment, getPaymentStatus |
+    | Orders | getOrders, getOrderDetails, getShipments, cancelOrder, returnOrderItem |
+    | Shipment OTP | sendDeliveryOtp |
+    | Reviews | submitProductReview, submitShipmentReview |
+    | Wishlist | addToWishlist, getWishlist |
+    | Support Tickets | createTicket, getTickets, getTicketDetails, addTicketComment |
+
+    > **Note:** The 28 MCP tools are NOT traditional REST endpoints. They are invoked
+    > via the MCP JSON-RPC protocol over SSE. This spec documents the HTTP transport
+    > endpoints and the MCP message schema for each tool.
+    > For Postman-ready examples, import `docs/postman_collection.json`.
+  contact:
+    name: MockEcomMCPServer
+    url: https://github.com/arpanm/MockEcomMCPServer
+  license:
+    name: MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Local dev
+  - url: http://localhost:8081
+    description: Local dev (alt port)
+
+tags:
+  - name: MCP Transport
+    description: MCP SSE connection and JSON-RPC message endpoints
+  - name: Health
+    description: Actuator health and metrics
+  - name: H2 Console
+    description: H2 in-memory DB console (dev only)
+  - name: Product Discovery
+    description: searchProducts, filterProducts, getFilters, getSortOptions
+  - name: Product Details
+    description: getProductDetails, getProductReviews
+  - name: Delivery
+    description: getDeliveryTime
+  - name: Authentication
+    description: serverToServerLogin
+  - name: Cart
+    description: addToCart, checkout
+  - name: Address
+    description: getAddresses, selectAddress
+  - name: Payment
+    description: initiatePayment, getPaymentStatus
+  - name: Orders
+    description: getOrders, getOrderDetails, getShipments, cancelOrder, returnOrderItem
+  - name: Shipment OTP
+    description: sendDeliveryOtp
+  - name: Reviews
+    description: submitProductReview, submitShipmentReview
+  - name: Wishlist
+    description: addToWishlist, getWishlist
+  - name: Support Tickets
+    description: createTicket, getTickets, getTicketDetails, addTicketComment
+
+paths:
+  /sse:
+    get:
+      tags: [MCP Transport]
+      summary: Establish MCP SSE connection
+      description: |
+        Opens a Server-Sent Events (SSE) stream to the MCP server. MCP clients
+        connect here first to establish the session, then send tool calls via
+        `POST /mcp/message`. Keep the connection alive for the duration of the session.
+      responses:
+        '200':
+          description: SSE stream opened successfully
+          content:
+            text/event-stream:
+              schema:
+                type: string
+              example: |
+                event: endpoint
+                data: /mcp/message?sessionId=abc123
+
+  /mcp/message:
+    post:
+      tags: [MCP Transport]
+      summary: Send MCP JSON-RPC tool call
+      description: |
+        Send a JSON-RPC 2.0 message to invoke any of the 28 MCP tools.
+        The `sessionId` query parameter is provided by the SSE `endpoint` event.
+
+        **Method:** `tools/call`
+
+        **params.name:** one of the 28 tool names
+
+        **params.arguments:** tool-specific arguments (see schemas below)
+      parameters:
+        - name: sessionId
+          in: query
+          required: false
+          description: MCP session ID provided by the SSE endpoint event
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/McpRequest'
+            examples:
+              searchProducts:
+                summary: Search for laptops
+                value:
+                  jsonrpc: "2.0"
+                  id: 1
+                  method: tools/call
+                  params:
+                    name: searchProducts
+                    arguments:
+                      query: laptop
+                      page: 0
+                      pageSize: 10
+              serverToServerLogin:
+                summary: Authenticate a customer
+                value:
+                  jsonrpc: "2.0"
+                  id: 2
+                  method: tools/call
+                  params:
+                    name: serverToServerLogin
+                    arguments:
+                      phoneNumber: "9999999999"
+                      platform: MyShopApp
+                      secret: mock-platform-secret-key
+              addToCart:
+                summary: Add product to cart
+                value:
+                  jsonrpc: "2.0"
+                  id: 3
+                  method: tools/call
+                  params:
+                    name: addToCart
+                    arguments:
+                      productId: "1"
+                      quantity: 2
+                      sessionId: "<sessionId from serverToServerLogin>"
+      responses:
+        '200':
+          description: JSON-RPC response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpResponse'
+
+  /actuator/health:
+    get:
+      tags: [Health]
+      summary: Health check
+      responses:
+        '200':
+          description: Application health status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: UP
+
+  /actuator/info:
+    get:
+      tags: [Health]
+      summary: Application info
+      responses:
+        '200':
+          description: Application metadata
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /actuator/metrics:
+    get:
+      tags: [Health]
+      summary: Application metrics
+      responses:
+        '200':
+          description: Metrics listing
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /h2-console:
+    get:
+      tags: [H2 Console]
+      summary: H2 database console (dev only)
+      description: |
+        In-memory H2 database web UI. Available only in the `dev` profile.
+        JDBC URL: `jdbc:h2:mem:mockecomdb`
+        Username: `sa`, Password: (empty)
+      responses:
+        '200':
+          description: H2 console HTML page
+
+components:
+  schemas:
+    McpRequest:
+      type: object
+      required: [jsonrpc, id, method, params]
+      properties:
+        jsonrpc:
+          type: string
+          enum: ["2.0"]
+          description: JSON-RPC version (always "2.0")
+        id:
+          type: integer
+          description: Request ID (echoed in response)
+          example: 1
+        method:
+          type: string
+          enum: [tools/call, tools/list, initialize]
+          description: JSON-RPC method
+          example: tools/call
+        params:
+          $ref: '#/components/schemas/McpParams'
+
+    McpParams:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          description: MCP tool name
+          enum:
+            - searchProducts
+            - filterProducts
+            - getFilters
+            - getSortOptions
+            - getProductDetails
+            - getProductReviews
+            - getDeliveryTime
+            - serverToServerLogin
+            - addToCart
+            - checkout
+            - getAddresses
+            - selectAddress
+            - initiatePayment
+            - getPaymentStatus
+            - getOrders
+            - getOrderDetails
+            - getShipments
+            - cancelOrder
+            - returnOrderItem
+            - sendDeliveryOtp
+            - submitProductReview
+            - submitShipmentReview
+            - addToWishlist
+            - getWishlist
+            - createTicket
+            - getTickets
+            - getTicketDetails
+            - addTicketComment
+        arguments:
+          description: Tool-specific arguments (see individual tool schemas)
+          oneOf:
+            - $ref: '#/components/schemas/SearchProductsArgs'
+            - $ref: '#/components/schemas/FilterProductsArgs'
+            - $ref: '#/components/schemas/GetFiltersArgs'
+            - $ref: '#/components/schemas/GetSortOptionsArgs'
+            - $ref: '#/components/schemas/GetProductDetailsArgs'
+            - $ref: '#/components/schemas/GetProductReviewsArgs'
+            - $ref: '#/components/schemas/GetDeliveryTimeArgs'
+            - $ref: '#/components/schemas/ServerToServerLoginArgs'
+            - $ref: '#/components/schemas/AddToCartArgs'
+            - $ref: '#/components/schemas/CheckoutArgs'
+            - $ref: '#/components/schemas/GetAddressesArgs'
+            - $ref: '#/components/schemas/SelectAddressArgs'
+            - $ref: '#/components/schemas/InitiatePaymentArgs'
+            - $ref: '#/components/schemas/GetPaymentStatusArgs'
+            - $ref: '#/components/schemas/GetOrdersArgs'
+            - $ref: '#/components/schemas/GetOrderDetailsArgs'
+            - $ref: '#/components/schemas/GetShipmentsArgs'
+            - $ref: '#/components/schemas/CancelOrderArgs'
+            - $ref: '#/components/schemas/ReturnOrderItemArgs'
+            - $ref: '#/components/schemas/SendDeliveryOtpArgs'
+            - $ref: '#/components/schemas/SubmitProductReviewArgs'
+            - $ref: '#/components/schemas/SubmitShipmentReviewArgs'
+            - $ref: '#/components/schemas/AddToWishlistArgs'
+            - $ref: '#/components/schemas/GetWishlistArgs'
+            - $ref: '#/components/schemas/CreateTicketArgs'
+            - $ref: '#/components/schemas/GetTicketsArgs'
+            - $ref: '#/components/schemas/GetTicketDetailsArgs'
+            - $ref: '#/components/schemas/AddTicketCommentArgs'
+
+    McpResponse:
+      type: object
+      properties:
+        jsonrpc:
+          type: string
+          example: "2.0"
+        id:
+          type: integer
+          example: 1
+        result:
+          type: object
+          description: Tool result (structure varies per tool)
+          properties:
+            content:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: text
+                  text:
+                    type: string
+                    description: JSON-encoded tool result as a string
+        error:
+          $ref: '#/components/schemas/McpError'
+
+    McpError:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: -32600
+        message:
+          type: string
+          example: Invalid Request
+
+    # ─── Product Discovery ────────────────────────────────────────────────────
+
+    SearchProductsArgs:
+      type: object
+      description: Arguments for searchProducts tool
+      required: [query]
+      properties:
+        query:
+          type: string
+          description: Keyword search query
+          example: laptop
+        page:
+          type: integer
+          description: Zero-based page number
+          default: 0
+          minimum: 0
+          example: 0
+        pageSize:
+          type: integer
+          description: Results per page (max 50)
+          default: 10
+          minimum: 1
+          maximum: 50
+          example: 10
+
+    FilterProductsArgs:
+      type: object
+      description: Arguments for filterProducts tool
+      properties:
+        query:
+          type: string
+          description: Optional keyword query
+          example: shirt
+        category:
+          type: string
+          description: Product category
+          enum: [GROCERY, ELECTRONICS, FASHION, BEAUTY, HOME]
+          example: FASHION
+        subCategory:
+          type: string
+          description: Product sub-category
+          example: Men's Clothing
+        brand:
+          type: string
+          description: Brand name filter
+          example: Nike
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    GetFiltersArgs:
+      type: object
+      description: Arguments for getFilters tool
+      required: [query]
+      properties:
+        query:
+          type: string
+          description: Search query to get available filters for
+          example: shoes
+
+    GetSortOptionsArgs:
+      type: object
+      description: Arguments for getSortOptions tool
+      required: [query]
+      properties:
+        query:
+          type: string
+          description: Search query to get sort options for
+          example: mobile phone
+
+    # ─── Product Details ──────────────────────────────────────────────────────
+
+    GetProductDetailsArgs:
+      type: object
+      description: Arguments for getProductDetails tool
+      required: [productId]
+      properties:
+        productId:
+          type: string
+          description: Product ID from searchProducts or filterProducts
+          example: "42"
+
+    GetProductReviewsArgs:
+      type: object
+      description: Arguments for getProductReviews tool
+      required: [productId]
+      properties:
+        productId:
+          type: string
+          description: Product ID
+          example: "42"
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    # ─── Delivery ─────────────────────────────────────────────────────────────
+
+    GetDeliveryTimeArgs:
+      type: object
+      description: Arguments for getDeliveryTime tool
+      required: [productId, pincode]
+      properties:
+        productId:
+          type: string
+          description: Product ID
+          example: "42"
+        pincode:
+          type: string
+          description: 6-digit Indian pincode
+          example: "110001"
+          pattern: '^\d{6}$'
+
+    # ─── Authentication ───────────────────────────────────────────────────────
+
+    ServerToServerLoginArgs:
+      type: object
+      description: Arguments for serverToServerLogin tool
+      required: [phoneNumber, platform, secret]
+      properties:
+        phoneNumber:
+          type: string
+          description: Customer's 10-digit mobile number
+          example: "9999999999"
+          pattern: '^\d{10}$'
+        platform:
+          type: string
+          description: Ecommerce platform name
+          example: MyShopApp
+        secret:
+          type: string
+          description: Platform secret key (mock value — mock-platform-secret-key)
+          example: mock-platform-secret-key
+
+    # ─── Cart ─────────────────────────────────────────────────────────────────
+
+    AddToCartArgs:
+      type: object
+      description: Arguments for addToCart tool
+      required: [productId, quantity, sessionId]
+      properties:
+        productId:
+          type: string
+          description: Product ID to add
+          example: "42"
+        quantity:
+          type: integer
+          description: Quantity to add
+          minimum: 1
+          example: 2
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    CheckoutArgs:
+      type: object
+      description: Arguments for checkout tool
+      required: [cartId, sessionId]
+      properties:
+        cartId:
+          type: string
+          description: Cart ID from addToCart response
+          example: cart_xyz789
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Address ──────────────────────────────────────────────────────────────
+
+    GetAddressesArgs:
+      type: object
+      description: Arguments for getAddresses tool
+      required: [sessionId]
+      properties:
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    SelectAddressArgs:
+      type: object
+      description: Arguments for selectAddress tool
+      required: [checkoutId, addressId, sessionId]
+      properties:
+        checkoutId:
+          type: string
+          description: Checkout ID from checkout response
+          example: chk_def456
+        addressId:
+          type: string
+          description: Address ID from getAddresses response
+          example: addr_ghi789
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Payment ──────────────────────────────────────────────────────────────
+
+    InitiatePaymentArgs:
+      type: object
+      description: Arguments for initiatePayment tool
+      required: [checkoutId, paymentMethod, sessionId]
+      properties:
+        checkoutId:
+          type: string
+          description: Checkout ID from selectAddress response
+          example: chk_def456
+        paymentMethod:
+          type: string
+          description: Payment method
+          enum: [UPI, CARD, NETBANKING, COD, WALLET]
+          example: UPI
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    GetPaymentStatusArgs:
+      type: object
+      description: Arguments for getPaymentStatus tool
+      required: [paymentId, sessionId]
+      properties:
+        paymentId:
+          type: string
+          description: Payment ID from initiatePayment response
+          example: pay_jkl012
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Orders ───────────────────────────────────────────────────────────────
+
+    GetOrdersArgs:
+      type: object
+      description: Arguments for getOrders tool
+      required: [sessionId]
+      properties:
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    GetOrderDetailsArgs:
+      type: object
+      description: Arguments for getOrderDetails tool
+      required: [orderId, sessionId]
+      properties:
+        orderId:
+          type: string
+          description: Order ID from getPaymentStatus or getOrders response
+          example: ord_mno345
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    GetShipmentsArgs:
+      type: object
+      description: Arguments for getShipments tool
+      required: [sessionId]
+      properties:
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    CancelOrderArgs:
+      type: object
+      description: Arguments for cancelOrder tool
+      required: [reason, sessionId]
+      properties:
+        orderId:
+          type: string
+          description: Order ID for full cancellation (omit for item-level cancel)
+          example: ord_mno345
+        orderItemId:
+          type: string
+          description: Order item ID for partial cancellation (omit for full-order cancel)
+          example: item_pqr678
+        reason:
+          type: string
+          description: Cancellation reason
+          example: Changed my mind
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    ReturnOrderItemArgs:
+      type: object
+      description: Arguments for returnOrderItem tool
+      required: [orderItemId, reason, sessionId]
+      properties:
+        orderItemId:
+          type: string
+          description: Order item ID of the delivered item to return
+          example: item_pqr678
+        reason:
+          type: string
+          description: Return reason
+          enum: [WRONG_ITEM, DAMAGED, NOT_AS_DESCRIBED, CHANGED_MIND, OTHER]
+          example: WRONG_ITEM
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Shipment OTP ─────────────────────────────────────────────────────────
+
+    SendDeliveryOtpArgs:
+      type: object
+      description: Arguments for sendDeliveryOtp tool
+      required: [shipmentId, sessionId]
+      properties:
+        shipmentId:
+          type: string
+          description: Shipment ID from getOrderDetails or getShipments response
+          example: ship_stu901
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Reviews ──────────────────────────────────────────────────────────────
+
+    SubmitProductReviewArgs:
+      type: object
+      description: Arguments for submitProductReview tool
+      required: [productId, rating, title, description, sessionId]
+      properties:
+        productId:
+          type: string
+          description: Product ID to review
+          example: "42"
+        rating:
+          type: integer
+          description: Star rating (1-5)
+          minimum: 1
+          maximum: 5
+          example: 4
+        title:
+          type: string
+          description: Review title
+          example: Great product!
+        description:
+          type: string
+          description: Detailed review text
+          example: Really happy with the quality and fast delivery.
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    SubmitShipmentReviewArgs:
+      type: object
+      description: Arguments for submitShipmentReview tool
+      required: [shipmentId, rating, title, description, sessionId]
+      properties:
+        shipmentId:
+          type: string
+          description: Shipment ID from getShipments or getOrderDetails
+          example: ship_stu901
+        rating:
+          type: integer
+          description: Delivery experience rating (1-5)
+          minimum: 1
+          maximum: 5
+          example: 5
+        title:
+          type: string
+          description: Delivery review title
+          example: Super fast delivery!
+        description:
+          type: string
+          description: Detailed delivery review text
+          example: Delivered in just 2 days, packaging was excellent.
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    # ─── Wishlist ─────────────────────────────────────────────────────────────
+
+    AddToWishlistArgs:
+      type: object
+      description: Arguments for addToWishlist tool
+      required: [productId, sessionId]
+      properties:
+        productId:
+          type: string
+          description: Product ID to add to wishlist
+          example: "42"
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    GetWishlistArgs:
+      type: object
+      description: Arguments for getWishlist tool
+      required: [sessionId]
+      properties:
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    # ─── Support Tickets ──────────────────────────────────────────────────────
+
+    CreateTicketArgs:
+      type: object
+      description: Arguments for createTicket tool
+      required: [subject, description, type, sessionId]
+      properties:
+        subject:
+          type: string
+          description: Ticket subject line
+          example: Wrong item delivered
+        description:
+          type: string
+          description: Detailed description of the issue
+          example: I ordered a blue shirt but received a red one.
+        type:
+          type: string
+          description: Ticket type
+          enum: [DELIVERY_ISSUE, RETURN_REQUEST, PAYMENT_ISSUE, PRODUCT_QUALITY, CANCELLATION, OTHER]
+          example: DELIVERY_ISSUE
+        orderId:
+          type: string
+          description: Optional related order ID
+          example: ord_mno345
+        orderItemId:
+          type: string
+          description: Optional related order item ID
+          example: item_pqr678
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    GetTicketsArgs:
+      type: object
+      description: Arguments for getTickets tool
+      required: [sessionId]
+      properties:
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+        page:
+          type: integer
+          default: 0
+          minimum: 0
+        pageSize:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 50
+
+    GetTicketDetailsArgs:
+      type: object
+      description: Arguments for getTicketDetails tool
+      required: [ticketId, sessionId]
+      properties:
+        ticketId:
+          type: string
+          description: Ticket ID from getTickets response
+          example: tkt_vwx234
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
+
+    AddTicketCommentArgs:
+      type: object
+      description: Arguments for addTicketComment tool
+      required: [ticketId, comment, sessionId]
+      properties:
+        ticketId:
+          type: string
+          description: Ticket ID from getTickets response
+          example: tkt_vwx234
+        comment:
+          type: string
+          description: Comment or reply text to add to the ticket
+          example: Still waiting for the pickup agent. Please update.
+        sessionId:
+          type: string
+          description: Session ID from serverToServerLogin
+          example: sess_abc123
