@@ -53,3 +53,13 @@ app:
   pagination:
     default-page-size: 10
     max-page-size: 50
+
+# Swagger UI (only active when springdoc is on classpath via -Pswagger)
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    tags-sorter: alpha
+    operations-sorter: alpha
