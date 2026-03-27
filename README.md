@@ -279,6 +279,39 @@ All endpoints are on `http://localhost:<PORT>` (default `8080`).
 | `GET /actuator/metrics` | Metrics list |
 | `GET /actuator/metrics/{name}` | Specific metric value |
 | `GET /h2-console` | H2 browser console **(dev only)** |
+| `GET /swagger-ui.html` | Swagger UI — interactive API docs **(requires `-Pswagger`)** |
+| `GET /v3/api-docs` | OpenAPI 3.0 JSON spec **(requires `-Pswagger`)** |
+
+### API Documentation
+
+| Resource | Location | Notes |
+|----------|----------|-------|
+| **Swagger UI** | `http://localhost:8080/swagger-ui.html` | Live interactive docs, build with `mvn package -Pswagger` |
+| **OpenAPI JSON** | `http://localhost:8080/v3/api-docs` | Machine-readable spec, requires `-Pswagger` |
+| **OpenAPI YAML** | [`docs/openapi.yaml`](docs/openapi.yaml) | Static spec, always available (no build flag needed) |
+| **Postman Collection** | [`docs/postman_collection.json`](docs/postman_collection.json) | Import into Postman; all 28 tools pre-configured |
+
+#### Enable Swagger UI
+
+Build with the `swagger` Maven profile to activate the live Swagger UI:
+
+```bash
+# Build with Swagger
+mvn clean package -Pswagger -DskipTests
+
+# Run
+java -jar target/mcp-server-1.0.0-SNAPSHOT.jar
+
+# Open in browser
+open http://localhost:8080/swagger-ui.html
+```
+
+#### Import Postman Collection
+
+1. Open Postman → **Import** → select `docs/postman_collection.json`
+2. Set the `baseUrl` collection variable (default: `http://localhost:8080`)
+3. Run **Authentication → serverToServerLogin** first — the `sessionId` is auto-saved
+4. Use the saved `sessionId` in all subsequent requests
 
 ### H2 Console Connection
 
