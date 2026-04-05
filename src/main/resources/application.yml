@@ -4,7 +4,8 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:h2:mem:mockecomdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE
+    # File-based H2 ensures scraped restaurant/menu data persists between restarts
+    url: jdbc:h2:file:./data/mockecomdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -14,7 +15,8 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      # 'update' preserves data across restarts (required for incremental scraping)
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
@@ -26,7 +28,7 @@ spring:
         name: mock-ecom-mcp-server
         version: 1.0.0
         type: SYNC
-        instructions: "Mock Ecommerce MCP Server providing 28 tools for product search, cart management, orders, reviews, wishlist, and support tickets across grocery, fashion, electronics, beauty, and home categories."
+        instructions: "Mock Ecommerce MCP Server providing 35+ tools for product search, cart management, orders, reviews, wishlist, support tickets, and Swiggy restaurant data (restaurants across 50 Indian cities with full menu details)."
 
 server:
   port: 8080
@@ -53,6 +55,13 @@ app:
   pagination:
     default-page-size: 10
     max-page-size: 50
+  scraper:
+    # Delay between Swiggy API requests in milliseconds (respect rate limits)
+    request-delay-ms: 1500
+    # User-agent string for HTTP requests
+    user-agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    # Set to true to automatically start scraping on application startup
+    auto-start: false
 
 # Swagger UI (only active when springdoc is on classpath via -Pswagger)
 springdoc:
