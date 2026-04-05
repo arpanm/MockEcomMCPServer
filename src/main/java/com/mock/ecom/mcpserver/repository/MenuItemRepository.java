@@ -23,7 +23,7 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 
     long countByRestaurant(Restaurant restaurant);
 
-    @Query("SELECT mi FROM MenuItem mi WHERE " +
+    @Query("SELECT mi FROM MenuItem mi JOIN FETCH mi.menuCategory mc WHERE " +
            "mi.restaurant = :restaurant AND " +
            "(:isVeg IS NULL OR mi.isVeg = :isVeg) AND " +
            "(:inStock IS NULL OR mi.inStock = :inStock)")
@@ -32,15 +32,19 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
             @Param("isVeg") Boolean isVeg,
             @Param("inStock") Boolean inStock);
 
-    @Query("SELECT mi FROM MenuItem mi WHERE " +
+    @Query(value = "SELECT mi FROM MenuItem mi JOIN FETCH mi.restaurant r JOIN FETCH r.city c WHERE " +
            "LOWER(mi.name) LIKE LOWER(CONCAT('%', :query, '%')) AND " +
-           "mi.restaurant.city.name = :cityName")
+           "c.name = :cityName",
+           countQuery = "SELECT COUNT(mi) FROM MenuItem mi JOIN mi.restaurant r JOIN r.city c WHERE " +
+           "LOWER(mi.name) LIKE LOWER(CONCAT('%', :query, '%')) AND c.name = :cityName")
     Page<MenuItem> searchMenuItemsByCityName(
             @Param("query") String query,
             @Param("cityName") String cityName,
             Pageable pageable);
 
-    @Query("SELECT mi FROM MenuItem mi WHERE " +
+    @Query(value = "SELECT mi FROM MenuItem mi JOIN FETCH mi.restaurant r JOIN FETCH r.city c WHERE " +
+           "LOWER(mi.name) LIKE LOWER(CONCAT('%', :query, '%'))",
+           countQuery = "SELECT COUNT(mi) FROM MenuItem mi WHERE " +
            "LOWER(mi.name) LIKE LOWER(CONCAT('%', :query, '%'))")
     Page<MenuItem> searchMenuItemsByName(
             @Param("query") String query,

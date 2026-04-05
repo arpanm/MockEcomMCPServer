@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -32,14 +33,17 @@ public class RestaurantQueryService {
     private final MenuCategoryRepository menuCategoryRepository;
     private final MenuItemRepository menuItemRepository;
 
+    @Transactional(readOnly = true)
     public List<City> getAllCities() {
         return cityRepository.findAllOrderByRestaurantCountDesc();
     }
 
+    @Transactional(readOnly = true)
     public Optional<City> getCityByName(String name) {
         return cityRepository.findByName(name);
     }
 
+    @Transactional(readOnly = true)
     public Page<Restaurant> searchRestaurants(String cityName, String cuisine, String name,
                                                Boolean isPureVeg, int page, int pageSize) {
         PageRequest pageable = PageRequest.of(page, Math.min(pageSize, 50),
@@ -52,10 +56,12 @@ public class RestaurantQueryService {
                 pageable);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Restaurant> getRestaurantBySwiggyId(String swiggyId) {
         return restaurantRepository.findBySwiggyId(swiggyId);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Restaurant> getRestaurantById(Long id) {
         return restaurantRepository.findById(id);
     }
@@ -64,6 +70,7 @@ public class RestaurantQueryService {
      * Returns the full menu for a restaurant grouped by category.
      * Each entry has: categoryName, items (list of item maps).
      */
+    @Transactional(readOnly = true)
     public List<Map<String, Object>> getRestaurantMenu(Restaurant restaurant) {
         List<MenuCategory> categories = menuCategoryRepository
                 .findByRestaurantOrderByDisplayOrderAsc(restaurant);
@@ -82,10 +89,12 @@ public class RestaurantQueryService {
         return menu;
     }
 
+    @Transactional(readOnly = true)
     public List<MenuItem> getMenuItems(Restaurant restaurant, Boolean isVeg, Boolean inStock) {
         return menuItemRepository.findByRestaurantAndFilters(restaurant, isVeg, inStock);
     }
 
+    @Transactional(readOnly = true)
     public Page<MenuItem> searchRestaurantsByMenuItem(String query, String cityName, int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, Math.min(pageSize, 50));
         if (cityName != null && !cityName.isBlank()) {

@@ -15,7 +15,8 @@ import java.util.Optional;
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 
-    Optional<Restaurant> findBySwiggyId(String swiggyId);
+    @Query("SELECT r FROM Restaurant r JOIN FETCH r.city WHERE r.swiggyId = :swiggyId")
+    Optional<Restaurant> findBySwiggyId(@Param("swiggyId") String swiggyId);
 
     boolean existsBySwiggyId(String swiggyId);
 
@@ -28,8 +29,13 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     @Query("SELECT r FROM Restaurant r WHERE r.menuScraped = false ORDER BY r.id ASC")
     List<Restaurant> findUnscrapedMenuRestaurants(Pageable pageable);
 
-    @Query("SELECT r FROM Restaurant r WHERE " +
-           "(:cityName IS NULL OR r.city.name = :cityName) AND " +
+    @Query(value = "SELECT r FROM Restaurant r JOIN FETCH r.city c WHERE " +
+           "(:cityName IS NULL OR c.name = :cityName) AND " +
+           "(:cuisine IS NULL OR LOWER(r.cuisines) LIKE LOWER(CONCAT('%', :cuisine, '%'))) AND " +
+           "(:name IS NULL OR LOWER(r.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
+           "(:isPureVeg IS NULL OR r.isPureVeg = :isPureVeg)",
+           countQuery = "SELECT COUNT(r) FROM Restaurant r JOIN r.city c WHERE " +
+           "(:cityName IS NULL OR c.name = :cityName) AND " +
            "(:cuisine IS NULL OR LOWER(r.cuisines) LIKE LOWER(CONCAT('%', :cuisine, '%'))) AND " +
            "(:name IS NULL OR LOWER(r.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
            "(:isPureVeg IS NULL OR r.isPureVeg = :isPureVeg)")
