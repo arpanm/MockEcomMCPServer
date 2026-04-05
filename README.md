@@ -17,11 +17,12 @@ One AI chatbot using this server can serve users across **Grocery, Fashion, Elec
 7. [The 28 E-commerce MCP Tools](#the-28-mcp-tools)
 8. [Restaurant & Swiggy Scraper Tools](#restaurant--swiggy-scraper-tools)
 9. [Seed Data Pipeline](#seed-data-pipeline)
-10. [Test Cases](#test-cases)
-11. [Running Tests Locally](#running-tests-locally)
-12. [Production Deployment](#production-deployment)
-13. [Connecting MCP Clients](#connecting-mcp-clients)
-14. [Status & TODOs](#status--todos)
+10. [LLM Product Data Generation](#llm-product-data-generation)
+11. [Test Cases](#test-cases)
+12. [Running Tests Locally](#running-tests-locally)
+13. [Production Deployment](#production-deployment)
+14. [Connecting MCP Clients](#connecting-mcp-clients)
+15. [Status & TODOs](#status--todos)
 
 ---
 
@@ -266,6 +267,7 @@ docker-compose down -v
 | `DB_USERNAME` | `postgres` | Database username |
 | `DB_PASSWORD` | `postgres` | Database password |
 | `SERVER_PORT` | `8080` | HTTP listen port |
+| `ANTHROPIC_API_KEY` | *(empty)* | Anthropic API key — enables LLM product generation when set |
 
 ---
 
@@ -600,9 +602,10 @@ The server includes a full Swiggy data scraper and restaurant query layer, addin
 | Order | Component | Action |
 |-------|-----------|--------|
 | 1 | `CityDataInitializer` | Seeds 50 major Indian cities with lat/lng (idempotent) |
-| 2 | `SeedDataLoader` | If `classpath:db/seed/seed-data.json` exists and DB is empty, loads all scraped restaurants and menus |
-| 3 | `SampleRestaurantDataSeeder` | If DB is still empty (no seed file), loads 10 hardcoded demo restaurants across Bangalore, Mumbai, Delhi, Hyderabad, Chennai |
-| 4 | `ScraperAutoStartRunner` | If `app.scraper.auto-start=true`, kicks off live scraping asynchronously |
+| 2 | `SeedDataLoader` | If `classpath:db/seed/seed-data.json` exists and restaurant table is empty, loads scraped restaurants + menus |
+| 3 | `ProductSeedLoader` | If `classpath:db/seed/products-seed.json` exists and product table is empty, loads 70 pre-generated products |
+| 4 | `SampleRestaurantDataSeeder` | If restaurant table is still empty, loads 10 hardcoded demo restaurants as fallback |
+| 5 | `ScraperAutoStartRunner` | If `app.scraper.auto-start=true`, kicks off live scraping asynchronously |
 
 ### Restaurant query tools (6 tools)
 
@@ -691,6 +694,111 @@ When you re-run the scraper to pick up new restaurants:
 ### Data persistence (development)
 
 The development H2 database persists in `./data/mockecomdb.*` (file-based H2). Data survives server restarts. The `./data/` directory is `.gitignore`d — only the exported `seed-data.json` in `src/main/resources/db/seed/` is committed.
+
+---
+
+## LLM Product Data Generation
+
+The server can use an Anthropic LLM (Claude) to generate **realistic Indian market product data on-demand**. When a product search or filter returns no existing results, and an Anthropic API key is configured, the server calls `claude-haiku-4-5` to generate products, saves them to the database, and returns them to the caller.
+
+### How it works
+
+```
+MCP call: searchProducts / filterProducts
+    │
+    ▼
+productRepository.searchByQuery(...)  →  results found?
+    │ no results                              │ yes
+    ▼                                         ▼
+LlmProductGeneratorService.isAvailable()?  return existing data
+    │ yes (API key set)        │ no
+    ▼                          ▼
+callAnthropicAPI(...)     MockDataGeneratorService (deterministic fallback)
+    │
+    ▼
+Parse JSON → save Products + ProductAttributes to DB
+    │
+    ▼
+Return newly generated products to MCP caller
+```
+
+Generated products are **persisted to the database** immediately, so:
+- Subsequent calls for the same query return the already-saved products (no extra API calls)
+- The data can be exported as seed JSON and committed so new deployments start fully loaded
+
+### Setup — Enable LLM generation
+
+**Option A: Environment variable (recommended)**
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
+mvn spring-boot:run
+```
+
+**Option B: application.yml**
+
+```yaml
+app:
+  llm:
+    api-key: sk-ant-your-key-here
+    model: claude-haiku-4-5-20251001   # default, any Claude model works
+    enabled: true
+```
+
+> **Note:** The API key is intentionally not committed to git. Always pass it via environment variable or a local `.env` file excluded from version control.
+
+When `ANTHROPIC_API_KEY` is not set, `LlmProductGeneratorService.isAvailable()` returns `false` and the server falls back to `MockDataGeneratorService` — deterministic mock products generated from a hash seed. No errors are thrown.
+
+### Seed products-seed.json from LLM output
+
+After generating products via MCP calls (or directly via the REST API), export them to a seed file:
+
+```json
+{ "name": "exportProductSeedData", "arguments": {} }
+```
+
+This writes `./seed-export/products-seed.json`. Copy it to the resources directory and commit:
+
+```bash
+cp seed-export/products-seed.json src/main/resources/db/seed/products-seed.json
+git add src/main/resources/db/seed/products-seed.json
+git commit -m "chore: add LLM-generated product seed data"
+git push
+```
+
+On the next fresh deployment, `ProductSeedLoader` (@Order 3) auto-loads the file before the LLM is ever invoked.
+
+### Startup order with product seed loading
+
+| Order | Component | Action |
+|-------|-----------|--------|
+| 1 | `CityDataInitializer` | Seeds 50 major Indian cities with lat/lng (idempotent) |
+| 2 | `SeedDataLoader` | Loads `classpath:db/seed/seed-data.json` (restaurants + menus) if DB is empty |
+| 3 | `ProductSeedLoader` | Loads `classpath:db/seed/products-seed.json` if product table is empty |
+| 4 | `SampleRestaurantDataSeeder` | Fallback: loads 10 hardcoded demo restaurants if still empty |
+| 5 | `ScraperAutoStartRunner` | If `app.scraper.auto-start=true`, starts live scraping |
+
+### Pre-loaded seed data
+
+The committed `src/main/resources/db/seed/products-seed.json` contains **70 products** across all categories:
+
+| Category | Count | Brands |
+|----------|-------|--------|
+| Electronics | 15 | Samsung, OnePlus, Apple, boAt, Sony, Xiaomi, HP, Dell, Asus, JBL, Realme, Canon |
+| Fashion | 15 | Fabindia, Bata, Levi's, Puma, Allen Solly, Manyavar, Nike, Adidas, Fossil, W for Woman |
+| Grocery | 15 | Tata, Fortune, Amul, Aashirvaad, MDH, Haldirams, Nestle, Dabur, Patanjali, Saffola |
+| Beauty | 13 | Lakme, Himalaya, Mamaearth, WOW, L'Oreal, Neutrogena, Dove, Garnier, Nivea, Plum |
+| Home | 12 | Prestige, Philips, Bajaj, Cello, Godrej, Milton, Solimo, Pigeon, Nilkamal, Butterfly |
+
+All products use realistic INR pricing with meaningful discounts, and include 3–5 category-specific attributes (e.g., warranty + RAM + processor for Electronics; shelf life + FSSAI certification for Grocery).
+
+### Environment variables summary
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `ANTHROPIC_API_KEY` | *(empty)* | Anthropic API key. When set, enables LLM product generation. |
+| `app.llm.model` | `claude-haiku-4-5-20251001` | Claude model to use for generation (set in `application.yml`) |
+| `app.llm.enabled` | `true` | Master switch; set to `false` to force mock data even when API key is present |
 
 ---
 
@@ -968,13 +1076,20 @@ curl http://localhost:8080/actuator/health
 |---------|--------|
 | 28 MCP tools exposed via SSE | ✅ Complete |
 | Mock data generation (5 categories) | ✅ Complete |
-| H2 in-memory dev database | ✅ Complete |
+| **LLM product generation via Anthropic API** | ✅ Complete |
+| **70-product seed file (all 5 categories)** | ✅ Complete |
+| **Product seed auto-load on fresh deployment** | ✅ Complete |
+| H2 file-based dev database (persists across restarts) | ✅ Complete |
 | PostgreSQL production support | ✅ Complete |
 | Session-based authentication | ✅ Complete |
 | Full shopping flow (search → order) | ✅ Complete |
 | Support tickets & comments | ✅ Complete |
 | Product & shipment reviews | ✅ Complete |
 | Wishlist | ✅ Complete |
+| **Swiggy restaurant scraper (50 cities)** | ✅ Complete |
+| **Restaurant + menu seed data pipeline** | ✅ Complete |
+| **React Web UI (restaurants + products explorer)** | ✅ Complete |
+| **REST API for all data (restaurants, products, stats)** | ✅ Complete |
 | 83 integration tests | ✅ Complete |
 | Docker + Docker Compose | ✅ Complete |
 | GitHub Actions CI | ✅ Complete |

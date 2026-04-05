@@ -55,6 +55,10 @@ app:
   pagination:
     default-page-size: 10
     max-page-size: 50
+  llm:
+    api-key: ${ANTHROPIC_API_KEY:}
+    model: claude-haiku-4-5-20251001
+    enabled: true
   scraper:
     # Delay between Swiggy API requests in milliseconds (respect rate limits)
     request-delay-ms: 1500

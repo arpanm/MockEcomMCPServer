@@ -25,6 +25,7 @@ public class ProductService {
     private final ProductAttributeRepository productAttributeRepository;
     private final ReviewRepository reviewRepository;
     private final MockDataGeneratorService mockDataGenerator;
+    private final LlmProductGeneratorService llmProductGeneratorService;
 
     private static final int DEFAULT_GENERATE_COUNT = 8;
 
@@ -32,7 +33,16 @@ public class ProductService {
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Product> existing = productRepository.searchByQuery(query, pageable);
         if (existing.getTotalElements() == 0) {
-            List<Product> generated = mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+            List<Product> generated;
+            if (llmProductGeneratorService.isAvailable()) {
+                String category = mockDataGenerator.detectCategory(query);
+                generated = llmProductGeneratorService.generateProducts(category, query, DEFAULT_GENERATE_COUNT);
+                if (generated.isEmpty()) {
+                    generated = mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                }
+            } else {
+                generated = mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+            }
             int start = Math.min(page * pageSize, generated.size());
             int end   = Math.min(start + pageSize, generated.size());
             return new PageImpl<>(generated.subList(start, end), pageable, generated.size());
@@ -45,7 +55,16 @@ public class ProductService {
         if (query != null && !query.isBlank()) {
             Page<Product> base = productRepository.searchByQuery(query, PageRequest.of(0, 100));
             if (base.getTotalElements() == 0) {
-                mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                if (llmProductGeneratorService.isAvailable()) {
+                    String detectedCategory = category != null && !category.isBlank()
+                            ? category : mockDataGenerator.detectCategory(query);
+                    List<Product> llmProducts = llmProductGeneratorService.generateProducts(detectedCategory, query, DEFAULT_GENERATE_COUNT);
+                    if (llmProducts.isEmpty()) {
+                        mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                    }
+                } else {
+                    mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                }
             }
         }
         return productRepository.filterProducts(
@@ -59,7 +78,15 @@ public class ProductService {
         if (query != null && !query.isBlank()) {
             Page<Product> existing = productRepository.searchByQuery(query, PageRequest.of(0, 1));
             if (existing.getTotalElements() == 0) {
-                mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                if (llmProductGeneratorService.isAvailable()) {
+                    String detectedCategory = mockDataGenerator.detectCategory(query);
+                    List<Product> llmProducts = llmProductGeneratorService.generateProducts(detectedCategory, query, DEFAULT_GENERATE_COUNT);
+                    if (llmProducts.isEmpty()) {
+                        mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                    }
+                } else {
+                    mockDataGenerator.generateProductList(query, DEFAULT_GENERATE_COUNT);
+                }
             }
         }
         List<String> categories   = productRepository.findDistinctCategoriesByQuery(query != null ? query : "");
