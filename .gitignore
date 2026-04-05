@@ -25,3 +25,6 @@ replay_pid*
 
 # Maven build output
 target/
+
+# H2 file-based database (runtime data, not source)
+data/
