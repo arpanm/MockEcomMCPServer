@@ -2,7 +2,7 @@
 
 A general-purpose **Mock MCP (Model Context Protocol) Server** built with **Java 21 + Spring Boot 3.3.6 + Spring AI 1.0.0-M6**.
 
-One AI chatbot using this server can serve users across **Grocery, Fashion, Electronics, Beauty, and Home** categories. Exposes **28 MCP tools** that any MCP-compatible AI client (Claude, GPT, Gemini, etc.) can discover and invoke.
+One AI chatbot using this server can serve users across **Grocery, Fashion, Electronics, Beauty, and Home** categories, and **food delivery** (Swiggy-style restaurants). Exposes **40+ MCP tools** that any MCP-compatible AI client (Claude, GPT, Gemini, etc.) can discover and invoke.
 
 ---
 
@@ -13,12 +13,14 @@ One AI chatbot using this server can serve users across **Grocery, Fashion, Elec
 3. [Code Structure](#code-structure)
 4. [Local Runtime — Quick Start](#local-runtime--quick-start)
 5. [Local Endpoints](#local-endpoints)
-6. [The 28 MCP Tools](#the-28-mcp-tools)
-7. [Test Cases](#test-cases)
-8. [Running Tests Locally](#running-tests-locally)
-9. [Production Deployment](#production-deployment)
-10. [Connecting MCP Clients](#connecting-mcp-clients)
-11. [Status & TODOs](#status--todos)
+6. [The 28 E-commerce MCP Tools](#the-28-mcp-tools)
+7. [Restaurant & Swiggy Scraper Tools](#restaurant--swiggy-scraper-tools)
+8. [Seed Data Pipeline](#seed-data-pipeline)
+9. [Test Cases](#test-cases)
+10. [Running Tests Locally](#running-tests-locally)
+11. [Production Deployment](#production-deployment)
+12. [Connecting MCP Clients](#connecting-mcp-clients)
+13. [Status & TODOs](#status--todos)
 
 ---
 
@@ -317,7 +319,7 @@ open http://localhost:8080/swagger-ui.html
 
 ```
 URL:      http://localhost:8080/h2-console
-JDBC URL: jdbc:h2:mem:mockecomdb
+JDBC URL: jdbc:h2:file:./data/mockecomdb
 Username: sa
 Password: (leave blank)
 ```
@@ -424,6 +426,109 @@ sessionId = serverToServerLogin(
 # Step 2 — Use sessionId in all authenticated tools
 addToCart(productId=<id>, quantity=1, sessionId=<sessionId>)
 ```
+
+---
+
+## Restaurant & Swiggy Scraper Tools
+
+The server includes a full Swiggy data scraper and restaurant query layer, adding **12 new MCP tools** for food delivery use cases.
+
+### How it works on startup
+
+| Order | Component | Action |
+|-------|-----------|--------|
+| 1 | `CityDataInitializer` | Seeds 50 major Indian cities with lat/lng (idempotent) |
+| 2 | `SeedDataLoader` | If `classpath:db/seed/seed-data.json` exists and DB is empty, loads all scraped restaurants and menus |
+| 3 | `SampleRestaurantDataSeeder` | If DB is still empty (no seed file), loads 10 hardcoded demo restaurants across Bangalore, Mumbai, Delhi, Hyderabad, Chennai |
+| 4 | `ScraperAutoStartRunner` | If `app.scraper.auto-start=true`, kicks off live scraping asynchronously |
+
+### Restaurant query tools (6 tools)
+
+| Tool | Parameters | Description |
+|------|-----------|-------------|
+| `listRestaurantCities` | — | All 50 Indian cities with restaurant counts and scrape status |
+| `searchRestaurants` | `cityName`, `cuisine`, `name`, `isPureVeg`, `page`, `pageSize` | Search by any combination; results sorted by rating |
+| `getRestaurantBySwiggyId` | `swiggyId` | Full restaurant details |
+| `getRestaurantMenu` | `swiggyId` | Full menu grouped by category with item prices (in INR) |
+| `searchMenuItems` | `query`, `cityName`, `page`, `pageSize` | Find dishes by name across all restaurants in a city |
+| `filterRestaurantMenuItems` | `swiggyId`, `isVeg`, `inStock` | Filter a restaurant's menu by veg/non-veg, availability |
+
+### Scraper control tools (6 tools)
+
+| Tool | Parameters | Description |
+|------|-----------|-------------|
+| `getScraperStatus` | — | City/restaurant/menu counts; whether scraping is running |
+| `startRestaurantScraping` | — | Start async scraping for all un-scraped cities (skips already-done) |
+| `scrapeRestaurantsForCity` | `cityName` | Scrape a single city synchronously; returns count of new restaurants |
+| `startMenuScraping` | — | Start async menu scraping for all restaurants without menus |
+| `scrapeRestaurantMenu` | `swiggyId` | Scrape one restaurant's menu synchronously |
+| `exportSeedData` | — | Export all data to `./seed-export/seed-data.json` for committing |
+
+### Scraping live data from Swiggy
+
+> **Requires:** Network access to `www.swiggy.com`. The server must be running on a machine that can reach Swiggy's API.
+
+**Step 1 – Scrape all restaurants:**
+```json
+{ "name": "startRestaurantScraping", "arguments": {} }
+```
+Monitor with `getScraperStatus`. Each city takes ~30–120 seconds (1.5 s rate limit). All 50 cities take ~1–2 hours.
+
+**Step 2 – Scrape menus:**
+```json
+{ "name": "startMenuScraping", "arguments": {} }
+```
+May take several hours for thousands of restaurants. Both scrapers are **incremental** – safe to interrupt and resume anytime.
+
+**Step 3 – Check progress:**
+```json
+{ "name": "getScraperStatus", "arguments": {} }
+```
+Returns `totalCities`, `scrapedCities`, `totalRestaurants`, `restaurantsWithMenu`, and running flags.
+
+---
+
+## Seed Data Pipeline
+
+The seed data pipeline lets you commit scraped data to git so every new deployment starts fully loaded — no re-scraping required.
+
+### Export scraped data
+
+After scraping, call the `exportSeedData` MCP tool:
+```json
+{ "name": "exportSeedData", "arguments": {} }
+```
+
+This writes `./seed-export/seed-data.json` — a portable JSON file containing all restaurants and their full menus.
+
+### Commit the seed file
+
+```bash
+cp seed-export/seed-data.json src/main/resources/db/seed/seed-data.json
+git add src/main/resources/db/seed/seed-data.json
+git commit -m "chore: add scraped Swiggy restaurant seed data (N restaurants)"
+git push
+```
+
+### Rebuild and deploy
+
+```bash
+mvn clean package -DskipTests
+java -jar target/mcp-server-1.0.0-SNAPSHOT.jar
+```
+
+On first startup with a fresh database, `SeedDataLoader` detects the seed file and imports all data automatically. `SampleRestaurantDataSeeder` is skipped when data is already present.
+
+### Incremental updates after re-scraping
+
+When you re-run the scraper to pick up new restaurants:
+- **Cities:** `scrapeRestaurantsForCity` upserts by Swiggy ID — existing restaurants are updated, new ones are inserted
+- **Menus:** `startMenuScraping` skips restaurants where `menuScraped = true`; use `scrapeRestaurantMenu` to force-refresh a single restaurant
+- After re-scraping, call `exportSeedData` again, copy the new file, and commit
+
+### Data persistence (development)
+
+The development H2 database persists in `./data/mockecomdb.*` (file-based H2). Data survives server restarts. The `./data/` directory is `.gitignore`d — only the exported `seed-data.json` in `src/main/resources/db/seed/` is committed.
 
 ---
 
@@ -738,7 +843,8 @@ curl http://localhost:8080/actuator/health
 - Payment processing is fully mocked (always succeeds with UPI/CARD/NETBANKING/WALLET, COD always succeeds)
 - Delivery OTP is generated but not actually sent anywhere
 - Product images are served from `picsum.photos` (external dependency)
-- H2 data is lost on server restart (by design for dev mode)
+- H2 data **persists** across restarts in dev mode (file-based DB in `./data/`). Delete `./data/` to reset.
+- Live Swiggy scraping requires unrestricted internet access to `www.swiggy.com`; sandbox/restricted environments must use the committed seed file
 
 ---
 

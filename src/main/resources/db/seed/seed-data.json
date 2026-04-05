@@ -1,0 +1,882 @@
+{
+  "exportedAt" : "2026-04-05T03:55:05.135013386",
+  "version" : "1.0",
+  "totalRestaurants" : 10,
+  "totalMenuItems" : 65,
+  "restaurants" : [ {
+    "swiggyId" : "100001",
+    "name" : "Truffles",
+    "cityName" : "Bangalore",
+    "locality" : "Koramangala",
+    "areaName" : "Koramangala 5th Block",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/rngajaja7fdcqehnuuxi",
+    "avgRating" : 4.5,
+    "totalRatingsString" : "5K+ ratings",
+    "costForTwo" : 60000,
+    "costForTwoMessage" : "₹600 for two",
+    "deliveryTime" : 30,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Indian, Burgers, Sandwiches",
+    "discountInfo" : "40% off up to ₹80",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Burgers",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw101",
+        "name" : "The Truffles Burger",
+        "description" : "Juicy beef patty with truffle aioli",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw102",
+        "name" : "Chicken BBQ Burger",
+        "description" : "Smoky BBQ chicken with crispy bacon",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw103",
+        "name" : "Veggie Burger",
+        "description" : "Black bean patty with avocado",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Pasta & Mains",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw104",
+        "name" : "Spaghetti Aglio e Olio",
+        "description" : "Classic garlic olive oil pasta",
+        "price" : 25000,
+        "defaultPrice" : 25000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw105",
+        "name" : "Penne Arrabbiata",
+        "description" : "Spicy tomato sauce pasta",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw106",
+        "name" : "Grilled Chicken Steak",
+        "description" : "250g chicken with herbed butter",
+        "price" : 32000,
+        "defaultPrice" : 32000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Desserts",
+      "displayOrder" : 2,
+      "items" : [ {
+        "swiggyItemId" : "sw107",
+        "name" : "Dark Chocolate Fondant",
+        "description" : "Warm molten cake with vanilla ice cream",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw108",
+        "name" : "NY Cheesecake",
+        "description" : "Classic New York style cheesecake",
+        "price" : 15000,
+        "defaultPrice" : 15000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "100002",
+    "name" : "CTR (Central Tiffin Room)",
+    "cityName" : "Bangalore",
+    "locality" : "Malleshwaram",
+    "areaName" : "Malleshwaram 8th Cross",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/k6pnxbpnmlpcmbz0bwzv",
+    "avgRating" : 4.7,
+    "totalRatingsString" : "10K+ ratings",
+    "costForTwo" : 15000,
+    "costForTwoMessage" : "₹150 for two",
+    "deliveryTime" : 20,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "South Indian, Breakfast",
+    "discountInfo" : "20% off",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Breakfast Specials",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw201",
+        "name" : "Benne Masala Dosa",
+        "description" : "Crispy dosa with butter and spiced potato filling",
+        "price" : 8000,
+        "defaultPrice" : 8000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw202",
+        "name" : "Set Dosa",
+        "description" : "Soft fluffy set of 3 dosas with chutney and sambar",
+        "price" : 6000,
+        "defaultPrice" : 6000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw203",
+        "name" : "Idli Sambar",
+        "description" : "Steamed rice cakes with lentil soup",
+        "price" : 5000,
+        "defaultPrice" : 5000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw204",
+        "name" : "Vada Sambar",
+        "description" : "Crispy lentil donuts with sambar",
+        "price" : 5000,
+        "defaultPrice" : 5000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Beverages",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw205",
+        "name" : "Filter Coffee",
+        "description" : "Traditional South Indian filter coffee",
+        "price" : 2500,
+        "defaultPrice" : 2500,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw206",
+        "name" : "Badam Milk",
+        "description" : "Warm almond milk with saffron",
+        "price" : 4000,
+        "defaultPrice" : 4000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "100003",
+    "name" : "Meghana Foods",
+    "cityName" : "Bangalore",
+    "locality" : "Koramangala",
+    "areaName" : "Koramangala 6th Block",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/meghana_img",
+    "avgRating" : 4.4,
+    "totalRatingsString" : "8K+ ratings",
+    "costForTwo" : 40000,
+    "costForTwoMessage" : "₹400 for two",
+    "deliveryTime" : 35,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Biryani, Andhra, South Indian",
+    "discountInfo" : "₹125 off above ₹249",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Biryani",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw301",
+        "name" : "Chicken Dum Biryani",
+        "description" : "Aromatic basmati rice with tender chicken pieces",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw302",
+        "name" : "Mutton Biryani",
+        "description" : "Slow-cooked mutton biryani",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw303",
+        "name" : "Veg Biryani",
+        "description" : "Fragrant vegetable biryani",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Curries",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw304",
+        "name" : "Gongura Chicken Curry",
+        "description" : "Tangy sorrel leaves chicken curry",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw305",
+        "name" : "Paneer Butter Masala",
+        "description" : "Creamy tomato-based paneer curry",
+        "price" : 20000,
+        "defaultPrice" : 20000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "200001",
+    "name" : "Bademiya",
+    "cityName" : "Mumbai",
+    "locality" : "Colaba",
+    "areaName" : "Colaba Causeway",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/bademiya_img",
+    "avgRating" : 4.3,
+    "totalRatingsString" : "7K+ ratings",
+    "costForTwo" : 35000,
+    "costForTwoMessage" : "₹350 for two",
+    "deliveryTime" : 25,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Mughlai, Kebabs, Biryani",
+    "discountInfo" : "30% off up to ₹100",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Kebabs",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw401",
+        "name" : "Seekh Kebab (6 pcs)",
+        "description" : "Minced lamb kebabs cooked on sigri",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw402",
+        "name" : "Chicken Tikka (6 pcs)",
+        "description" : "Marinated chicken pieces char-grilled",
+        "price" : 25000,
+        "defaultPrice" : 25000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw403",
+        "name" : "Boti Kebab",
+        "description" : "Tender mutton boti cooked on coal",
+        "price" : 30000,
+        "defaultPrice" : 30000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Rolls & Breads",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw404",
+        "name" : "Chicken Reshmi Roll",
+        "description" : "Creamy chicken in rumali roti",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw405",
+        "name" : "Pav Bhaji Special",
+        "description" : "Mumbai-style spiced mashed vegetables with butter pav",
+        "price" : 15000,
+        "defaultPrice" : 15000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "200002",
+    "name" : "Sarvi Restaurant",
+    "cityName" : "Mumbai",
+    "locality" : "Byculla",
+    "areaName" : "Mohammed Ali Road",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/sarvi_img",
+    "avgRating" : 4.5,
+    "totalRatingsString" : "9K+ ratings",
+    "costForTwo" : 50000,
+    "costForTwoMessage" : "₹500 for two",
+    "deliveryTime" : 40,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Mughlai, Biryani, Haleem",
+    "discountInfo" : "Free delivery on first order",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Biryani",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw501",
+        "name" : "Mutton Biryani (Full)",
+        "description" : "Slow-cooked dum biryani with whole spices",
+        "price" : 45000,
+        "defaultPrice" : 45000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw502",
+        "name" : "Chicken Biryani (Full)",
+        "description" : "Aromatic chicken dum biryani",
+        "price" : 38000,
+        "defaultPrice" : 38000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw503",
+        "name" : "Egg Biryani",
+        "description" : "Biryani with hard-boiled eggs",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Haleem & Nihari",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw504",
+        "name" : "Mutton Haleem",
+        "description" : "Slow-cooked mutton and lentil porridge",
+        "price" : 35000,
+        "defaultPrice" : 35000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw505",
+        "name" : "Chicken Nihari",
+        "description" : "Slow-braised chicken stew with khameeri roti",
+        "price" : 32000,
+        "defaultPrice" : 32000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "200003",
+    "name" : "Cream Centre",
+    "cityName" : "Mumbai",
+    "locality" : "Nariman Point",
+    "areaName" : "Churchgate",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/cream_centre_img",
+    "avgRating" : 4.2,
+    "totalRatingsString" : "5K+ ratings",
+    "costForTwo" : 70000,
+    "costForTwoMessage" : "₹700 for two",
+    "deliveryTime" : 45,
+    "isOpen" : true,
+    "isPureVeg" : false,
+    "cuisines" : "Continental, Italian, Indian, Pizza",
+    "discountInfo" : "20% off",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Starters",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw601",
+        "name" : "Chilli Paneer Dry",
+        "description" : "Crispy paneer tossed in chilli sauce",
+        "price" : 32000,
+        "defaultPrice" : 32000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw602",
+        "name" : "Corn & Cheese Balls",
+        "description" : "Crispy golden balls with sweet corn and cheese",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw603",
+        "name" : "Spring Rolls (4 pcs)",
+        "description" : "Crispy veg spring rolls",
+        "price" : 25000,
+        "defaultPrice" : 25000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Pizza",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw604",
+        "name" : "Margherita Pizza",
+        "description" : "Classic tomato base with mozzarella",
+        "price" : 38000,
+        "defaultPrice" : 38000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw605",
+        "name" : "Paneer Tikka Pizza",
+        "description" : "Spiced paneer on pizza base",
+        "price" : 45000,
+        "defaultPrice" : 45000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      } ]
+    }, {
+      "name" : "Desserts",
+      "displayOrder" : 2,
+      "items" : [ {
+        "swiggyItemId" : "sw606",
+        "name" : "Brownie with Ice Cream",
+        "description" : "Warm fudge brownie with vanilla ice cream",
+        "price" : 32000,
+        "defaultPrice" : 32000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw607",
+        "name" : "Gulab Jamun",
+        "description" : "Soft milk-solid dumplings in sugar syrup",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "300001",
+    "name" : "Karim's",
+    "cityName" : "Delhi",
+    "locality" : "Old Delhi",
+    "areaName" : "Jama Masjid",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/karims_img",
+    "avgRating" : 4.6,
+    "totalRatingsString" : "12K+ ratings",
+    "costForTwo" : 40000,
+    "costForTwoMessage" : "₹400 for two",
+    "deliveryTime" : 30,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Mughlai, Non-Veg, Kebabs",
+    "discountInfo" : "Flat ₹100 off",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Kebabs & Starters",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw701",
+        "name" : "Mutton Seekh Kebab",
+        "description" : "Minced mutton kebabs on iron skewer",
+        "price" : 30000,
+        "defaultPrice" : 30000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw702",
+        "name" : "Burra Kabab",
+        "description" : "Marinated mutton chops with special spices",
+        "price" : 45000,
+        "defaultPrice" : 45000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw703",
+        "name" : "Chicken Tangdi Kebab",
+        "description" : "Spiced chicken drumstick kebab",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Main Course",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw704",
+        "name" : "Mutton Korma",
+        "description" : "Rich Mughal-style mutton in creamy gravy",
+        "price" : 40000,
+        "defaultPrice" : 40000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw705",
+        "name" : "Chicken Jahangiri",
+        "description" : "Stuffed chicken in royal gravy",
+        "price" : 38000,
+        "defaultPrice" : 38000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw706",
+        "name" : "Dal Bukhara",
+        "description" : "Black lentils slow-cooked overnight",
+        "price" : 25000,
+        "defaultPrice" : 25000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Biryani",
+      "displayOrder" : 2,
+      "items" : [ {
+        "swiggyItemId" : "sw707",
+        "name" : "Mutton Biryani",
+        "description" : "Traditional Delhi-style dum biryani",
+        "price" : 40000,
+        "defaultPrice" : 40000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw708",
+        "name" : "Chicken Biryani",
+        "description" : "Fragrant chicken biryani",
+        "price" : 35000,
+        "defaultPrice" : 35000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "300002",
+    "name" : "Paranthe Wali Gali",
+    "cityName" : "Delhi",
+    "locality" : "Chandni Chowk",
+    "areaName" : "Old Delhi",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/paranthe_img",
+    "avgRating" : 4.4,
+    "totalRatingsString" : "8K+ ratings",
+    "costForTwo" : 20000,
+    "costForTwoMessage" : "₹200 for two",
+    "deliveryTime" : 20,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "North Indian, Breakfast, Street Food",
+    "discountInfo" : "Buy 2 get 1 free",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Paranthas",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw801",
+        "name" : "Aloo Parantha",
+        "description" : "Stuffed potato paratha with butter and curd",
+        "price" : 8000,
+        "defaultPrice" : 8000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw802",
+        "name" : "Gobhi Parantha",
+        "description" : "Cauliflower-stuffed crispy paratha",
+        "price" : 8000,
+        "defaultPrice" : 8000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw803",
+        "name" : "Paneer Parantha",
+        "description" : "Fresh cottage cheese stuffed paratha",
+        "price" : 10000,
+        "defaultPrice" : 10000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      }, {
+        "swiggyItemId" : "sw804",
+        "name" : "Mixed Veg Parantha",
+        "description" : "Assorted vegetable stuffed paratha",
+        "price" : 10000,
+        "defaultPrice" : 10000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Accompaniments",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw805",
+        "name" : "Raita",
+        "description" : "Yogurt with cucumber and cumin",
+        "price" : 4000,
+        "defaultPrice" : 4000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw806",
+        "name" : "Homemade Pickle",
+        "description" : "Traditional achar",
+        "price" : 3000,
+        "defaultPrice" : 3000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "400001",
+    "name" : "Paradise Biryani",
+    "cityName" : "Hyderabad",
+    "locality" : "Secunderabad",
+    "areaName" : "MG Road",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/paradise_img",
+    "avgRating" : 4.6,
+    "totalRatingsString" : "15K+ ratings",
+    "costForTwo" : 45000,
+    "costForTwoMessage" : "₹450 for two",
+    "deliveryTime" : 35,
+    "isOpen" : false,
+    "isPureVeg" : false,
+    "cuisines" : "Biryani, Hyderabadi",
+    "discountInfo" : "₹75 off on ₹199+",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Biryani",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw901",
+        "name" : "Mutton Dum Biryani",
+        "description" : "Original Hyderabadi dum biryani with tender mutton",
+        "price" : 35000,
+        "defaultPrice" : 35000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw902",
+        "name" : "Chicken Biryani Full Plate",
+        "description" : "Hyderabadi-style chicken biryani with raita",
+        "price" : 28000,
+        "defaultPrice" : 28000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw903",
+        "name" : "Veg Dum Biryani",
+        "description" : "Aromatic vegetable biryani",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Starters",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw904",
+        "name" : "Chicken 65",
+        "description" : "Spicy deep-fried chicken bites",
+        "price" : 22000,
+        "defaultPrice" : 22000,
+        "isVeg" : false,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw905",
+        "name" : "Mirchi Bajji",
+        "description" : "Stuffed green chilli fritters",
+        "price" : 12000,
+        "defaultPrice" : 12000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Desserts",
+      "displayOrder" : 2,
+      "items" : [ {
+        "swiggyItemId" : "sw906",
+        "name" : "Double Ka Meetha",
+        "description" : "Hyderabadi bread pudding with cream",
+        "price" : 12000,
+        "defaultPrice" : 12000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw907",
+        "name" : "Qubani Ka Meetha",
+        "description" : "Apricot dessert with cream",
+        "price" : 10000,
+        "defaultPrice" : 10000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  }, {
+    "swiggyId" : "500001",
+    "name" : "Saravana Bhavan",
+    "cityName" : "Chennai",
+    "locality" : "T Nagar",
+    "areaName" : "Pondy Bazaar",
+    "cloudinaryImageId" : "fl_lossy,f_auto,q_auto,w_660/saravana_img",
+    "avgRating" : 4.5,
+    "totalRatingsString" : "20K+ ratings",
+    "costForTwo" : 25000,
+    "costForTwoMessage" : "₹250 for two",
+    "deliveryTime" : 25,
+    "isOpen" : false,
+    "isPureVeg" : true,
+    "cuisines" : "South Indian, Tamil, Breakfast",
+    "discountInfo" : "Free delivery",
+    "promoted" : false,
+    "menuScraped" : true,
+    "menuCategories" : [ {
+      "name" : "Breakfast",
+      "displayOrder" : 0,
+      "items" : [ {
+        "swiggyItemId" : "sw1001",
+        "name" : "Masala Dosa",
+        "description" : "Crispy golden dosa with potato masala",
+        "price" : 10000,
+        "defaultPrice" : 10000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw1002",
+        "name" : "Pongal",
+        "description" : "Soft rice and lentil dish with ghee",
+        "price" : 8000,
+        "defaultPrice" : 8000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw1003",
+        "name" : "Vada (2 pcs)",
+        "description" : "Crispy urad dal fritters",
+        "price" : 7000,
+        "defaultPrice" : 7000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw1004",
+        "name" : "Uthappam",
+        "description" : "Thick rice pancake with toppings",
+        "price" : 9000,
+        "defaultPrice" : 9000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Meals & Thali",
+      "displayOrder" : 1,
+      "items" : [ {
+        "swiggyItemId" : "sw1005",
+        "name" : "Mini Meals",
+        "description" : "Rice, sambar, rasam, curd, and 2 curries",
+        "price" : 18000,
+        "defaultPrice" : 18000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw1006",
+        "name" : "Full Meals",
+        "description" : "Complete Tamil thali with unlimited rice",
+        "price" : 25000,
+        "defaultPrice" : 25000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    }, {
+      "name" : "Sweets",
+      "displayOrder" : 2,
+      "items" : [ {
+        "swiggyItemId" : "sw1007",
+        "name" : "Kesari",
+        "description" : "Semolina halwa with saffron",
+        "price" : 6000,
+        "defaultPrice" : 6000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : true
+      }, {
+        "swiggyItemId" : "sw1008",
+        "name" : "Payasam",
+        "description" : "Rice pudding with jaggery",
+        "price" : 7000,
+        "defaultPrice" : 7000,
+        "isVeg" : true,
+        "inStock" : true,
+        "isBestSeller" : false
+      } ]
+    } ]
+  } ]
+}

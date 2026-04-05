@@ -28,3 +28,4 @@ target/
 
 # H2 file-based database (runtime data, not source)
 data/
+seed-export/

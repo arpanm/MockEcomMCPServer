@@ -36,6 +36,10 @@ public class SampleRestaurantDataSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        if (restaurantRepository.count() > 0) {
+            log.info("Restaurants already present ({} records). Skipping sample data seed.", restaurantRepository.count());
+            return;
+        }
         seedRestaurantsWithMenus();
     }
 
@@ -238,6 +242,15 @@ public class SampleRestaurantDataSeeder implements ApplicationRunner {
         }
 
         if (seeded > 0) {
+            // Update city restaurant counts so listRestaurantCities shows accurate data
+            cityRepository.findAll().forEach(c -> {
+                long count = restaurantRepository.countByCity(c);
+                if (count > 0) {
+                    c.setRestaurantCount((int) count);
+                    c.setRestaurantsScraped(true);
+                    cityRepository.save(c);
+                }
+            });
             log.info("Seeded {} sample restaurants with full menus across Bangalore, Mumbai, Delhi, Hyderabad, Chennai", seeded);
         } else {
             log.info("Sample restaurants already in DB, skipping seed");
