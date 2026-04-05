@@ -1,0 +1,2866 @@
+{
+  "products": [
+    {
+      "title": "Samsung Galaxy S24 Ultra 5G",
+      "description": "The Samsung Galaxy S24 Ultra features a 6.8-inch Dynamic AMOLED 2X display, Snapdragon 8 Gen 3 processor, 12GB RAM and 256GB storage. Built-in S Pen for precision work with advanced AI-powered camera features and 200MP main sensor.",
+      "category": "ELECTRONICS",
+      "subCategory": "Smartphones",
+      "brand": "Samsung",
+      "model": "SM-S928B",
+      "imageUrl": "https://picsum.photos/seed/samsung-galaxy-s24-ultra/400/400",
+      "price": 124999.0,
+      "mrp": 134999.0,
+      "currency": "INR",
+      "color": "Titanium Black",
+      "weight": "232g",
+      "stockQuantity": 50,
+      "averageRating": 4.7,
+      "reviewCount": 3245,
+      "attributes": [
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "12GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "256GB"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "6.8 inch QHD+ AMOLED"
+        },
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Snapdragon 8 Gen 3"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "5000 mAh"
+        },
+        {
+          "attributeKey": "Camera",
+          "attributeValue": "200MP + 12MP + 10MP + 50MP"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "OnePlus 12 5G",
+      "description": "OnePlus 12 features Snapdragon 8 Gen 3 chipset with up to 16GB RAM and 512GB storage. Hasselblad-tuned triple camera system, 100W SUPERVOOC charging, and a stunning 6.82-inch LTPO AMOLED display.",
+      "category": "ELECTRONICS",
+      "subCategory": "Smartphones",
+      "brand": "OnePlus",
+      "model": "CPH2573",
+      "imageUrl": "https://picsum.photos/seed/oneplus-12/400/400",
+      "price": 64999.0,
+      "mrp": 69999.0,
+      "currency": "INR",
+      "color": "Silky Black",
+      "weight": "220g",
+      "stockQuantity": 75,
+      "averageRating": 4.6,
+      "reviewCount": 2187,
+      "attributes": [
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "16GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "512GB"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "6.82 inch LTPO AMOLED"
+        },
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Snapdragon 8 Gen 3"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "5400 mAh"
+        },
+        {
+          "attributeKey": "Charging",
+          "attributeValue": "100W SUPERVOOC"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Xiaomi Redmi Note 13 Pro+ 5G",
+      "description": "Redmi Note 13 Pro+ features a 200MP OIS camera with Dimensity 7200 Ultra processor. The 6.67-inch AMOLED display offers 120Hz refresh rate and the 5000mAh battery supports 120W HyperCharge for fast charging.",
+      "category": "ELECTRONICS",
+      "subCategory": "Smartphones",
+      "brand": "Xiaomi",
+      "model": "23090RA98G",
+      "imageUrl": "https://picsum.photos/seed/redmi-note-13-pro-plus/400/400",
+      "price": 28999.0,
+      "mrp": 31999.0,
+      "currency": "INR",
+      "color": "Midnight Black",
+      "weight": "204g",
+      "stockQuantity": 120,
+      "averageRating": 4.4,
+      "reviewCount": 4512,
+      "attributes": [
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "8GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "256GB"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "6.67 inch AMOLED 120Hz"
+        },
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Dimensity 7200 Ultra"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "5000 mAh"
+        },
+        {
+          "attributeKey": "Camera",
+          "attributeValue": "200MP OIS"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "HP Pavilion 15 Laptop",
+      "description": "HP Pavilion 15 is powered by 13th Gen Intel Core i5 processor with 16GB DDR4 RAM and 512GB NVMe SSD. Features a 15.6-inch FHD IPS display, Intel Iris Xe graphics, and Wi-Fi 6E connectivity for seamless productivity.",
+      "category": "ELECTRONICS",
+      "subCategory": "Laptops",
+      "brand": "HP",
+      "model": "EK0134TU",
+      "imageUrl": "https://picsum.photos/seed/hp-pavilion-15/400/400",
+      "price": 54999.0,
+      "mrp": 64999.0,
+      "currency": "INR",
+      "color": "Natural Silver",
+      "weight": "1.75kg",
+      "stockQuantity": 35,
+      "averageRating": 4.3,
+      "reviewCount": 1876,
+      "attributes": [
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Intel Core i5 13th Gen"
+        },
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "16GB DDR4"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "512GB NVMe SSD"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "15.6 inch FHD IPS"
+        },
+        {
+          "attributeKey": "Graphics",
+          "attributeValue": "Intel Iris Xe"
+        },
+        {
+          "attributeKey": "OS",
+          "attributeValue": "Windows 11 Home"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Dell Inspiron 14 Laptop",
+      "description": "Dell Inspiron 14 combines AMD Ryzen 5 7530U processor with 8GB RAM and 512GB SSD. The 14-inch FHD Anti-glare display and compact design make it ideal for students and professionals on the go.",
+      "category": "ELECTRONICS",
+      "subCategory": "Laptops",
+      "brand": "Dell",
+      "model": "5430",
+      "imageUrl": "https://picsum.photos/seed/dell-inspiron-14/400/400",
+      "price": 49990.0,
+      "mrp": 57990.0,
+      "currency": "INR",
+      "color": "Carbon Black",
+      "weight": "1.59kg",
+      "stockQuantity": 28,
+      "averageRating": 4.2,
+      "reviewCount": 1243,
+      "attributes": [
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "AMD Ryzen 5 7530U"
+        },
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "8GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "512GB SSD"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "14 inch FHD Anti-glare"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "54Whr"
+        },
+        {
+          "attributeKey": "OS",
+          "attributeValue": "Windows 11"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "boAt Rockerz 550 Wireless Headphone",
+      "description": "boAt Rockerz 550 delivers immersive sound with 40mm dynamic drivers and up to 20 hours of battery life. Foldable, ergonomic design with plush ear cushions and built-in mic for hands-free calling.",
+      "category": "ELECTRONICS",
+      "subCategory": "Audio & Headphones",
+      "brand": "boAt",
+      "model": "Rockerz 550",
+      "imageUrl": "https://picsum.photos/seed/boat-rockerz-550/400/400",
+      "price": 1499.0,
+      "mrp": 3990.0,
+      "currency": "INR",
+      "color": "Black",
+      "weight": "208g",
+      "stockQuantity": 200,
+      "averageRating": 4.1,
+      "reviewCount": 8923,
+      "attributes": [
+        {
+          "attributeKey": "Driver Size",
+          "attributeValue": "40mm"
+        },
+        {
+          "attributeKey": "Battery Life",
+          "attributeValue": "20 Hours"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Bluetooth 5.0"
+        },
+        {
+          "attributeKey": "Charging",
+          "attributeValue": "Micro USB"
+        },
+        {
+          "attributeKey": "Foldable",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Sony WH-1000XM5 Noise Cancelling Headphone",
+      "description": "Sony WH-1000XM5 features industry-leading noise cancelling with Auto NC Optimizer. Up to 30 hours battery, multipoint connection, quick charging, and crystal clear hands-free calling for audiophiles.",
+      "category": "ELECTRONICS",
+      "subCategory": "Audio & Headphones",
+      "brand": "Sony",
+      "model": "WH-1000XM5",
+      "imageUrl": "https://picsum.photos/seed/sony-wh-1000xm5/400/400",
+      "price": 24990.0,
+      "mrp": 29990.0,
+      "currency": "INR",
+      "color": "Black",
+      "weight": "250g",
+      "stockQuantity": 45,
+      "averageRating": 4.8,
+      "reviewCount": 5672,
+      "attributes": [
+        {
+          "attributeKey": "Noise Cancelling",
+          "attributeValue": "Industry Leading ANC"
+        },
+        {
+          "attributeKey": "Battery Life",
+          "attributeValue": "30 Hours"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Bluetooth 5.2"
+        },
+        {
+          "attributeKey": "Quick Charge",
+          "attributeValue": "3 min for 3 hours"
+        },
+        {
+          "attributeKey": "Multipoint",
+          "attributeValue": "Yes - 2 devices"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Samsung 55 inch 4K QLED Smart TV",
+      "description": "Samsung Q60C QLED TV delivers vibrant 4K resolution with Quantum Color technology and Direct Full Array backlighting. Smart Tizen OS, Object Tracking Sound, and Gaming Mode make it a complete entertainment hub.",
+      "category": "ELECTRONICS",
+      "subCategory": "Televisions",
+      "brand": "Samsung",
+      "model": "QA55Q60CAKLXL",
+      "imageUrl": "https://picsum.photos/seed/samsung-55-qled-tv/400/400",
+      "price": 54990.0,
+      "mrp": 74900.0,
+      "currency": "INR",
+      "color": "Titan Gray",
+      "stockQuantity": 20,
+      "averageRating": 4.5,
+      "reviewCount": 2341,
+      "attributes": [
+        {
+          "attributeKey": "Screen Size",
+          "attributeValue": "55 Inch"
+        },
+        {
+          "attributeKey": "Resolution",
+          "attributeValue": "4K UHD"
+        },
+        {
+          "attributeKey": "Panel Type",
+          "attributeValue": "QLED"
+        },
+        {
+          "attributeKey": "Smart TV",
+          "attributeValue": "Yes - Tizen OS"
+        },
+        {
+          "attributeKey": "Refresh Rate",
+          "attributeValue": "60Hz"
+        },
+        {
+          "attributeKey": "HDR",
+          "attributeValue": "HDR10+"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Canon EOS 1500D DSLR Camera",
+      "description": "Canon EOS 1500D packs a 24.1MP APS-C CMOS sensor with DIGIC 4+ image processor. Full HD video recording, 9-point AF, Wi-Fi and NFC connectivity, and Creative Auto mode for beginners and enthusiasts alike.",
+      "category": "ELECTRONICS",
+      "subCategory": "Cameras",
+      "brand": "Canon",
+      "model": "EOS 1500D",
+      "imageUrl": "https://picsum.photos/seed/canon-eos-1500d/400/400",
+      "price": 32995.0,
+      "mrp": 39995.0,
+      "currency": "INR",
+      "color": "Black",
+      "weight": "475g",
+      "stockQuantity": 30,
+      "averageRating": 4.4,
+      "reviewCount": 3102,
+      "attributes": [
+        {
+          "attributeKey": "Sensor",
+          "attributeValue": "24.1MP APS-C CMOS"
+        },
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "DIGIC 4+"
+        },
+        {
+          "attributeKey": "AF Points",
+          "attributeValue": "9-point"
+        },
+        {
+          "attributeKey": "Video",
+          "attributeValue": "Full HD 1080p"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Wi-Fi, NFC"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "LP-E10"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Apple iPad 10th Gen",
+      "description": "Apple iPad 10th generation features A14 Bionic chip, 10.9-inch Liquid Retina display, and 12MP front and rear cameras. USB-C connectivity, Wi-Fi 6, and all-day battery life for work and entertainment.",
+      "category": "ELECTRONICS",
+      "subCategory": "Tablets",
+      "brand": "Apple",
+      "model": "MPQ13HN/A",
+      "imageUrl": "https://picsum.photos/seed/apple-ipad-10th-gen/400/400",
+      "price": 44900.0,
+      "mrp": 44900.0,
+      "currency": "INR",
+      "color": "Blue",
+      "weight": "477g",
+      "stockQuantity": 40,
+      "averageRating": 4.7,
+      "reviewCount": 1987,
+      "attributes": [
+        {
+          "attributeKey": "Chip",
+          "attributeValue": "A14 Bionic"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "10.9 inch Liquid Retina"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "64GB"
+        },
+        {
+          "attributeKey": "Camera",
+          "attributeValue": "12MP front and rear"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Wi-Fi 6, USB-C"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "All-day up to 10 hours"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Noise ColorFit Pro 4 Smartwatch",
+      "description": "Noise ColorFit Pro 4 features a 1.72-inch TFT LCD display with 100+ sports modes and continuous SpO2 and heart rate monitoring. Built-in Alexa, 7-day battery life, and IP68 water resistance.",
+      "category": "ELECTRONICS",
+      "subCategory": "Wearables",
+      "brand": "Noise",
+      "model": "ColorFit Pro 4",
+      "imageUrl": "https://picsum.photos/seed/noise-colorfit-pro-4/400/400",
+      "price": 2499.0,
+      "mrp": 6999.0,
+      "currency": "INR",
+      "color": "Jet Black",
+      "stockQuantity": 150,
+      "averageRating": 4.0,
+      "reviewCount": 12543,
+      "attributes": [
+        {
+          "attributeKey": "Display",
+          "attributeValue": "1.72 inch TFT LCD"
+        },
+        {
+          "attributeKey": "Battery Life",
+          "attributeValue": "7 Days"
+        },
+        {
+          "attributeKey": "Water Resistance",
+          "attributeValue": "IP68"
+        },
+        {
+          "attributeKey": "Sports Modes",
+          "attributeValue": "100+"
+        },
+        {
+          "attributeKey": "Voice Assistant",
+          "attributeValue": "Alexa Built-in"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Bluetooth 5.0"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "JBL Flip 6 Portable Bluetooth Speaker",
+      "description": "JBL Flip 6 features powerful JBL Pro Sound with 30W output, IP67 waterproof and dustproof rating, and up to 12 hours of playtime. PartyBoost technology lets you link multiple JBL speakers for louder sound.",
+      "category": "ELECTRONICS",
+      "subCategory": "Audio & Headphones",
+      "brand": "JBL",
+      "model": "JBLFLIP6BLK",
+      "imageUrl": "https://picsum.photos/seed/jbl-flip-6/400/400",
+      "price": 9499.0,
+      "mrp": 13999.0,
+      "currency": "INR",
+      "color": "Black",
+      "weight": "550g",
+      "stockQuantity": 80,
+      "averageRating": 4.6,
+      "reviewCount": 7823,
+      "attributes": [
+        {
+          "attributeKey": "Output Power",
+          "attributeValue": "30W"
+        },
+        {
+          "attributeKey": "Battery Life",
+          "attributeValue": "12 Hours"
+        },
+        {
+          "attributeKey": "Water Resistance",
+          "attributeValue": "IP67"
+        },
+        {
+          "attributeKey": "Connectivity",
+          "attributeValue": "Bluetooth 5.1"
+        },
+        {
+          "attributeKey": "PartyBoost",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Philips 32 inch LED Smart TV",
+      "description": "Philips 32PHT6815 Smart TV features HD resolution with Pixel Plus HD picture enhancement, built-in Wi-Fi and Android 11, and Dolby Audio for rich sound. Compact size perfect for bedroom or kitchen entertainment.",
+      "category": "ELECTRONICS",
+      "subCategory": "Televisions",
+      "brand": "Philips",
+      "model": "32PHT6815",
+      "imageUrl": "https://picsum.photos/seed/philips-32-led-tv/400/400",
+      "price": 14990.0,
+      "mrp": 19990.0,
+      "currency": "INR",
+      "color": "Black",
+      "stockQuantity": 35,
+      "averageRating": 4.1,
+      "reviewCount": 1654,
+      "attributes": [
+        {
+          "attributeKey": "Screen Size",
+          "attributeValue": "32 Inch"
+        },
+        {
+          "attributeKey": "Resolution",
+          "attributeValue": "HD Ready"
+        },
+        {
+          "attributeKey": "Smart TV",
+          "attributeValue": "Yes - Android 11"
+        },
+        {
+          "attributeKey": "Sound",
+          "attributeValue": "Dolby Audio"
+        },
+        {
+          "attributeKey": "Refresh Rate",
+          "attributeValue": "60Hz"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Realme Narzo 60 Pro 5G",
+      "description": "Realme Narzo 60 Pro 5G features Dimensity 7050 processor with 8GB RAM, 100MP OIS camera, and AMOLED display with 120Hz refresh rate. 67W SUPERVOOC charging for super-fast top-ups.",
+      "category": "ELECTRONICS",
+      "subCategory": "Smartphones",
+      "brand": "Realme",
+      "model": "RMX3741",
+      "imageUrl": "https://picsum.photos/seed/realme-narzo-60-pro/400/400",
+      "price": 19999.0,
+      "mrp": 23999.0,
+      "currency": "INR",
+      "color": "Cosmic Black",
+      "weight": "182g",
+      "stockQuantity": 90,
+      "averageRating": 4.2,
+      "reviewCount": 3456,
+      "attributes": [
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "8GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "128GB"
+        },
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Dimensity 7050"
+        },
+        {
+          "attributeKey": "Camera",
+          "attributeValue": "100MP OIS"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "6.7 inch AMOLED 120Hz"
+        },
+        {
+          "attributeKey": "Charging",
+          "attributeValue": "67W SUPERVOOC"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Lenovo IdeaPad Slim 3 Laptop",
+      "description": "Lenovo IdeaPad Slim 3 packs Intel Core i3 12th Gen with 8GB RAM and 512GB SSD storage. The 15.6-inch FHD display, thin design, and long battery life make it an ideal everyday laptop.",
+      "category": "ELECTRONICS",
+      "subCategory": "Laptops",
+      "brand": "Lenovo",
+      "model": "82RK00VKIN",
+      "imageUrl": "https://picsum.photos/seed/lenovo-ideapad-slim-3/400/400",
+      "price": 37990.0,
+      "mrp": 45490.0,
+      "currency": "INR",
+      "color": "Arctic Grey",
+      "weight": "1.62kg",
+      "stockQuantity": 42,
+      "averageRating": 4.1,
+      "reviewCount": 2345,
+      "attributes": [
+        {
+          "attributeKey": "Processor",
+          "attributeValue": "Intel Core i3 12th Gen"
+        },
+        {
+          "attributeKey": "RAM",
+          "attributeValue": "8GB"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "512GB SSD"
+        },
+        {
+          "attributeKey": "Display",
+          "attributeValue": "15.6 inch FHD"
+        },
+        {
+          "attributeKey": "OS",
+          "attributeValue": "Windows 11"
+        },
+        {
+          "attributeKey": "Battery",
+          "attributeValue": "38Whr"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Allen Solly Men's Regular Fit Formal Shirt",
+      "description": "Allen Solly formal shirt in premium cotton blend fabric. Features a regular fit cut with spread collar and long sleeves. Easy-care finish keeps wrinkles away, perfect for office and business meetings.",
+      "category": "FASHION",
+      "subCategory": "Men's Clothing",
+      "brand": "Allen Solly",
+      "model": "ASHSXSLF898963",
+      "imageUrl": "https://picsum.photos/seed/allen-solly-formal-shirt/400/400",
+      "price": 1199.0,
+      "mrp": 1999.0,
+      "currency": "INR",
+      "color": "Light Blue",
+      "size": "L",
+      "material": "60% Cotton, 40% Polyester",
+      "stockQuantity": 200,
+      "averageRating": 4.3,
+      "reviewCount": 2156,
+      "attributes": [
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Regular Fit"
+        },
+        {
+          "attributeKey": "Collar",
+          "attributeValue": "Spread Collar"
+        },
+        {
+          "attributeKey": "Sleeve",
+          "attributeValue": "Full Sleeve"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Formal"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Levi's 511 Slim Fit Jeans",
+      "description": "Levi's 511 Slim Fit jeans offer a modern slim silhouette through thigh and leg opening. Made from premium stretch denim for all-day comfort. Versatile design transitions effortlessly from casual to smart casual.",
+      "category": "FASHION",
+      "subCategory": "Men's Clothing",
+      "brand": "Levis",
+      "model": "04511-5163",
+      "imageUrl": "https://picsum.photos/seed/levis-511-slim-jeans/400/400",
+      "price": 2999.0,
+      "mrp": 4299.0,
+      "currency": "INR",
+      "color": "Dark Blue",
+      "size": "32",
+      "material": "99% Cotton, 1% Elastane",
+      "stockQuantity": 150,
+      "averageRating": 4.5,
+      "reviewCount": 5432,
+      "attributes": [
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Slim Fit"
+        },
+        {
+          "attributeKey": "Rise",
+          "attributeValue": "Mid Rise"
+        },
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Zipper with Button"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Casual"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "W Women's Printed A-Line Kurta",
+      "description": "W kurta in floral printed fabric features an A-line silhouette with round neck and three-quarter sleeves. Made from soft rayon fabric for all-day comfort. Ideal for casual outings and festive occasions.",
+      "category": "FASHION",
+      "subCategory": "Women's Clothing",
+      "brand": "W",
+      "model": "19WW-WKU3476",
+      "imageUrl": "https://picsum.photos/seed/w-printed-kurta/400/400",
+      "price": 1299.0,
+      "mrp": 1999.0,
+      "currency": "INR",
+      "color": "Multicolor",
+      "size": "M",
+      "material": "Rayon",
+      "stockQuantity": 180,
+      "averageRating": 4.2,
+      "reviewCount": 3241,
+      "attributes": [
+        {
+          "attributeKey": "Silhouette",
+          "attributeValue": "A-Line"
+        },
+        {
+          "attributeKey": "Neck",
+          "attributeValue": "Round Neck"
+        },
+        {
+          "attributeKey": "Sleeve",
+          "attributeValue": "3/4 Sleeve"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Casual, Festive"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Hand Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Biba Women's Embroidered Anarkali Kurta Set",
+      "description": "Biba Anarkali kurta set features intricate embroidery on georgette fabric with matching palazzo pants and dupatta. A complete ethnic ensemble for festive occasions and traditional celebrations.",
+      "category": "FASHION",
+      "subCategory": "Ethnic Wear",
+      "brand": "Biba",
+      "model": "SSET10852",
+      "imageUrl": "https://picsum.photos/seed/biba-anarkali-kurta-set/400/400",
+      "price": 2999.0,
+      "mrp": 4999.0,
+      "currency": "INR",
+      "color": "Pink",
+      "size": "M",
+      "material": "Georgette",
+      "stockQuantity": 90,
+      "averageRating": 4.4,
+      "reviewCount": 1876,
+      "attributes": [
+        {
+          "attributeKey": "Set Contents",
+          "attributeValue": "Kurta, Palazzo, Dupatta"
+        },
+        {
+          "attributeKey": "Work",
+          "attributeValue": "Embroidered"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Festive, Ethnic"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Dry Clean"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "FabIndia Cotton Handloom Saree",
+      "description": "FabIndia handloom saree crafted from pure cotton with traditional woven patterns. Features a contrast border and unstitched blouse piece. Breathable fabric perfect for daily wear and formal occasions.",
+      "category": "FASHION",
+      "subCategory": "Ethnic Wear",
+      "brand": "Fabindia",
+      "model": "14021208",
+      "imageUrl": "https://picsum.photos/seed/fabindia-cotton-saree/400/400",
+      "price": 2499.0,
+      "mrp": 3490.0,
+      "currency": "INR",
+      "color": "Beige with Blue Border",
+      "material": "100% Cotton Handloom",
+      "stockQuantity": 60,
+      "averageRating": 4.5,
+      "reviewCount": 987,
+      "attributes": [
+        {
+          "attributeKey": "Length",
+          "attributeValue": "6.25 Meters"
+        },
+        {
+          "attributeKey": "Blouse Piece",
+          "attributeValue": "Unstitched Included"
+        },
+        {
+          "attributeKey": "Weave",
+          "attributeValue": "Handloom"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Daily, Formal"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Hand Wash or Dry Clean"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Nike Men's Dri-FIT Running T-Shirt",
+      "description": "Nike Dri-FIT technology wicks sweat away from skin and helps keep you dry and comfortable during workouts. Lightweight and breathable mesh fabric with ergonomic seams for unrestricted movement.",
+      "category": "FASHION",
+      "subCategory": "Sportswear",
+      "brand": "Nike",
+      "model": "AR6029-010",
+      "imageUrl": "https://picsum.photos/seed/nike-dri-fit-tshirt/400/400",
+      "price": 1995.0,
+      "mrp": 2295.0,
+      "currency": "INR",
+      "color": "Black",
+      "size": "L",
+      "material": "100% Polyester",
+      "stockQuantity": 250,
+      "averageRating": 4.4,
+      "reviewCount": 4567,
+      "attributes": [
+        {
+          "attributeKey": "Technology",
+          "attributeValue": "Dri-FIT"
+        },
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Regular Fit"
+        },
+        {
+          "attributeKey": "Sleeve",
+          "attributeValue": "Short Sleeve"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Sports, Workout"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "Vietnam"
+        }
+      ]
+    },
+    {
+      "title": "Bata Men's Formal Leather Shoes",
+      "description": "Bata formal leather shoes feature genuine leather upper with cushioned insole for all-day comfort. Classic lace-up design with Goodyear-welted sole for durability and style in the workplace.",
+      "category": "FASHION",
+      "subCategory": "Footwear",
+      "brand": "Bata",
+      "model": "824-3620",
+      "imageUrl": "https://picsum.photos/seed/bata-formal-shoes/400/400",
+      "price": 1799.0,
+      "mrp": 2499.0,
+      "currency": "INR",
+      "color": "Black",
+      "size": "8",
+      "material": "Genuine Leather",
+      "stockQuantity": 120,
+      "averageRating": 4.1,
+      "reviewCount": 3421,
+      "attributes": [
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Lace-Up"
+        },
+        {
+          "attributeKey": "Sole Material",
+          "attributeValue": "PU Rubber"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Formal, Office"
+        },
+        {
+          "attributeKey": "Toe Shape",
+          "attributeValue": "Round Toe"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Wipe Clean"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Woodland Men's Outdoor Boots",
+      "description": "Woodland outdoor boots feature genuine leather upper with TEX waterproof membrane to keep feet dry. Rugged rubber outsole with aggressive tread for superior grip on all terrains. Perfect for trekking and outdoor adventures.",
+      "category": "FASHION",
+      "subCategory": "Footwear",
+      "brand": "Woodland",
+      "model": "OGB 3965123",
+      "imageUrl": "https://picsum.photos/seed/woodland-outdoor-boots/400/400",
+      "price": 4499.0,
+      "mrp": 5999.0,
+      "currency": "INR",
+      "color": "Camel",
+      "size": "9",
+      "material": "Genuine Leather",
+      "weight": "650g",
+      "stockQuantity": 80,
+      "averageRating": 4.3,
+      "reviewCount": 2134,
+      "attributes": [
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Lace-Up"
+        },
+        {
+          "attributeKey": "Waterproof",
+          "attributeValue": "Yes - TEX Membrane"
+        },
+        {
+          "attributeKey": "Sole",
+          "attributeValue": "Rubber"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Outdoor, Trekking"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Puma Men's Running Shoes",
+      "description": "Puma Cell Regulate running shoes feature CELL technology in the heel for cushioning and stability. Breathable mesh upper and EVA midsole absorb impact for comfortable long runs.",
+      "category": "FASHION",
+      "subCategory": "Footwear",
+      "brand": "Puma",
+      "model": "19523701",
+      "imageUrl": "https://picsum.photos/seed/puma-running-shoes/400/400",
+      "price": 3299.0,
+      "mrp": 4999.0,
+      "currency": "INR",
+      "color": "Blue/White",
+      "size": "8",
+      "material": "Mesh Upper",
+      "stockQuantity": 100,
+      "averageRating": 4.2,
+      "reviewCount": 1876,
+      "attributes": [
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Lace-Up"
+        },
+        {
+          "attributeKey": "Cushioning",
+          "attributeValue": "CELL Technology"
+        },
+        {
+          "attributeKey": "Midsole",
+          "attributeValue": "EVA"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Running, Sports"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "Vietnam"
+        }
+      ]
+    },
+    {
+      "title": "Lavie Women's Tote Handbag",
+      "description": "Lavie structured tote bag in premium PU leather with multiple interior compartments. Dual shoulder straps and top handle for versatile carrying. Ample space for daily essentials - laptop, documents, and more.",
+      "category": "FASHION",
+      "subCategory": "Bags & Wallets",
+      "brand": "Lavie",
+      "model": "LB-TOTE-2024",
+      "imageUrl": "https://picsum.photos/seed/lavie-tote-handbag/400/400",
+      "price": 1299.0,
+      "mrp": 2999.0,
+      "currency": "INR",
+      "color": "Tan",
+      "material": "PU Leather",
+      "stockQuantity": 130,
+      "averageRating": 4.1,
+      "reviewCount": 2341,
+      "attributes": [
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Zip"
+        },
+        {
+          "attributeKey": "Compartments",
+          "attributeValue": "2 Main + 3 Interior"
+        },
+        {
+          "attributeKey": "Strap",
+          "attributeValue": "Dual Shoulder + Top Handle"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Daily, Office"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "HRX by Hrithik Roshan Gym Track Pants",
+      "description": "HRX track pants feature quick-dry active fabric with elastic waistband and drawstring. Side pockets for storage and ribbed cuffs. Ideal for gym workouts, yoga, and outdoor sports activities.",
+      "category": "FASHION",
+      "subCategory": "Sportswear",
+      "brand": "HRX",
+      "model": "HRXMP21-1045",
+      "imageUrl": "https://picsum.photos/seed/hrx-track-pants/400/400",
+      "price": 999.0,
+      "mrp": 1499.0,
+      "currency": "INR",
+      "color": "Black",
+      "size": "L",
+      "material": "Polyester",
+      "stockQuantity": 300,
+      "averageRating": 4.0,
+      "reviewCount": 6754,
+      "attributes": [
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Regular Fit"
+        },
+        {
+          "attributeKey": "Waistband",
+          "attributeValue": "Elastic with Drawstring"
+        },
+        {
+          "attributeKey": "Pockets",
+          "attributeValue": "2 Side Pockets"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Gym, Sports"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Van Heusen Men's Slim Fit Chinos",
+      "description": "Van Heusen slim fit chinos crafted from premium cotton stretch fabric for comfort and style. Clean minimal design with flat front and side pockets. Versatile for both office and casual occasions.",
+      "category": "FASHION",
+      "subCategory": "Men's Clothing",
+      "brand": "Van Heusen",
+      "model": "VHTRSLBF798701",
+      "imageUrl": "https://picsum.photos/seed/van-heusen-chinos/400/400",
+      "price": 1999.0,
+      "mrp": 3299.0,
+      "currency": "INR",
+      "color": "Khaki",
+      "size": "32",
+      "material": "98% Cotton, 2% Elastane",
+      "stockQuantity": 160,
+      "averageRating": 4.3,
+      "reviewCount": 1987,
+      "attributes": [
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Slim Fit"
+        },
+        {
+          "attributeKey": "Rise",
+          "attributeValue": "Mid Rise"
+        },
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Zip and Button"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Casual, Office"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Zara Women's Floral Midi Dress",
+      "description": "Zara midi dress in floral printed fabric with V-neckline and flared skirt. Adjustable straps for a perfect fit. Lightweight chiffon fabric drapes beautifully for a feminine, elegant look.",
+      "category": "FASHION",
+      "subCategory": "Women's Clothing",
+      "brand": "Zara",
+      "model": "2784-298-251",
+      "imageUrl": "https://picsum.photos/seed/zara-floral-midi-dress/400/400",
+      "price": 2990.0,
+      "mrp": 3990.0,
+      "currency": "INR",
+      "color": "White Floral",
+      "size": "S",
+      "material": "Chiffon",
+      "stockQuantity": 70,
+      "averageRating": 4.4,
+      "reviewCount": 1345,
+      "attributes": [
+        {
+          "attributeKey": "Neckline",
+          "attributeValue": "V-Neck"
+        },
+        {
+          "attributeKey": "Length",
+          "attributeValue": "Midi"
+        },
+        {
+          "attributeKey": "Sleeve",
+          "attributeValue": "Sleeveless"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Casual, Party"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Dry Clean"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "US Polo Assn Men's Polo T-Shirt",
+      "description": "US Polo Assn polo t-shirt in premium pique cotton with iconic embroidered polo player logo. Three-button placket, ribbed collar, and cuffs for a polished casual look. Available in multiple colors.",
+      "category": "FASHION",
+      "subCategory": "Men's Clothing",
+      "brand": "US Polo",
+      "model": "USTSH7895",
+      "imageUrl": "https://picsum.photos/seed/us-polo-polo-tshirt/400/400",
+      "price": 1299.0,
+      "mrp": 1999.0,
+      "currency": "INR",
+      "color": "Navy Blue",
+      "size": "M",
+      "material": "100% Pique Cotton",
+      "stockQuantity": 220,
+      "averageRating": 4.3,
+      "reviewCount": 4321,
+      "attributes": [
+        {
+          "attributeKey": "Fit",
+          "attributeValue": "Regular Fit"
+        },
+        {
+          "attributeKey": "Collar",
+          "attributeValue": "Polo/Ribbed"
+        },
+        {
+          "attributeKey": "Placket",
+          "attributeValue": "3-Button"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Casual, Smart Casual"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Adidas Women's Ultraboost Running Shoes",
+      "description": "Adidas Ultraboost features responsive BOOST midsole cushioning with Primeknit+ upper that adapts to your foot shape. Continental rubber outsole provides superior grip on all surfaces for serious runners.",
+      "category": "FASHION",
+      "subCategory": "Footwear",
+      "brand": "Adidas",
+      "model": "GX5462",
+      "imageUrl": "https://picsum.photos/seed/adidas-ultraboost-women/400/400",
+      "price": 11999.0,
+      "mrp": 16999.0,
+      "currency": "INR",
+      "color": "Core Black",
+      "size": "6",
+      "material": "Primeknit+",
+      "stockQuantity": 60,
+      "averageRating": 4.6,
+      "reviewCount": 2876,
+      "attributes": [
+        {
+          "attributeKey": "Midsole",
+          "attributeValue": "BOOST"
+        },
+        {
+          "attributeKey": "Upper",
+          "attributeValue": "Primeknit+"
+        },
+        {
+          "attributeKey": "Outsole",
+          "attributeValue": "Continental Rubber"
+        },
+        {
+          "attributeKey": "Closure",
+          "attributeValue": "Lace-Up"
+        },
+        {
+          "attributeKey": "Occasion",
+          "attributeValue": "Running, Sports"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "China"
+        }
+      ]
+    },
+    {
+      "title": "Aashirvaad Whole Wheat Atta",
+      "description": "Aashirvaad whole wheat atta is made from the best grains sourced from the heart of India. Contains natural wheat germ, making it more nutritious and flavourful for softer rotis and chapatis.",
+      "category": "GROCERY",
+      "subCategory": "Staples",
+      "brand": "Aashirvaad",
+      "model": "Whole Wheat 5kg",
+      "imageUrl": "https://picsum.photos/seed/aashirvaad-wheat-atta/400/400",
+      "price": 279.0,
+      "mrp": 300.0,
+      "currency": "INR",
+      "weight": "5kg",
+      "stockQuantity": 500,
+      "averageRating": 4.5,
+      "reviewCount": 12543,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Whole Wheat"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "5kg"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "Store in cool dry place"
+        }
+      ]
+    },
+    {
+      "title": "Fortune Sunflower Oil",
+      "description": "Fortune Sunflower Oil is refined from best quality sunflower seeds. Rich in Vitamins A, D, E and K, it has a light taste and high smoke point making it perfect for everyday Indian cooking.",
+      "category": "GROCERY",
+      "subCategory": "Staples",
+      "brand": "Fortune",
+      "model": "Sunflower Oil 1L",
+      "imageUrl": "https://picsum.photos/seed/fortune-sunflower-oil/400/400",
+      "price": 175.0,
+      "mrp": 195.0,
+      "currency": "INR",
+      "weight": "1 Litre",
+      "stockQuantity": 400,
+      "averageRating": 4.4,
+      "reviewCount": 8765,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Refined Sunflower Oil"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "1 Litre"
+        },
+        {
+          "attributeKey": "Vitamins",
+          "attributeValue": "A, D, E, K"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Amul Butter Salted",
+      "description": "Amul Butter is made from fresh pasteurized cream of superior quality. Rich, creamy taste that enhances the flavour of any dish. Ideal for spreading on toast, cooking, and baking.",
+      "category": "GROCERY",
+      "subCategory": "Dairy & Eggs",
+      "brand": "Amul",
+      "model": "Salted Butter 500g",
+      "imageUrl": "https://picsum.photos/seed/amul-butter-salted/400/400",
+      "price": 255.0,
+      "mrp": 270.0,
+      "currency": "INR",
+      "weight": "500g",
+      "stockQuantity": 300,
+      "averageRating": 4.6,
+      "reviewCount": 15234,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Salted Butter"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "500g"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "Refrigerate at 4C or below"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Tata Salt Iodized",
+      "description": "Tata Salt is India's most trusted salt brand, vacuum evaporated for high purity. Contains optimal levels of iodine for thyroid health. The superior crystal structure ensures consistent taste in all dishes.",
+      "category": "GROCERY",
+      "subCategory": "Staples",
+      "brand": "Tata",
+      "model": "Iodized Salt 1kg",
+      "imageUrl": "https://picsum.photos/seed/tata-salt-iodized/400/400",
+      "price": 24.0,
+      "mrp": 27.0,
+      "currency": "INR",
+      "weight": "1kg",
+      "stockQuantity": 1000,
+      "averageRating": 4.7,
+      "reviewCount": 23456,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Iodized Salt"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "1kg"
+        },
+        {
+          "attributeKey": "Purity",
+          "attributeValue": "99.9%"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "India Gate Basmati Rice Classic",
+      "description": "India Gate Classic Basmati Rice is long grain, aromatic basmati rice from the foothills of Himalayas. Each grain elongates to double on cooking with a distinctive aroma and delicate flavour.",
+      "category": "GROCERY",
+      "subCategory": "Staples",
+      "brand": "India Gate",
+      "model": "Classic Basmati 5kg",
+      "imageUrl": "https://picsum.photos/seed/india-gate-basmati-rice/400/400",
+      "price": 549.0,
+      "mrp": 599.0,
+      "currency": "INR",
+      "weight": "5kg",
+      "stockQuantity": 350,
+      "averageRating": 4.5,
+      "reviewCount": 9876,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Basmati Rice"
+        },
+        {
+          "attributeKey": "Grain",
+          "attributeValue": "Long Grain"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "5kg"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Tata Tea Gold",
+      "description": "Tata Tea Gold blends long and short whole leaf tea from Assam and Darjeeling for a rich golden taste. The unique brewing process captures freshness and natural tea aroma in every cup.",
+      "category": "GROCERY",
+      "subCategory": "Beverages",
+      "brand": "Tata",
+      "model": "Tea Gold 500g",
+      "imageUrl": "https://picsum.photos/seed/tata-tea-gold/400/400",
+      "price": 285.0,
+      "mrp": 310.0,
+      "currency": "INR",
+      "weight": "500g",
+      "stockQuantity": 450,
+      "averageRating": 4.4,
+      "reviewCount": 18765,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Black Tea"
+        },
+        {
+          "attributeKey": "Origin",
+          "attributeValue": "Assam & Darjeeling"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "500g"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "MDH Chana Masala Spice Mix",
+      "description": "MDH Chana Masala is a perfectly balanced blend of aromatic spices for authentic chickpea curry. Made from premium quality spices sourced from across India for restaurant-quality taste at home.",
+      "category": "GROCERY",
+      "subCategory": "Spices & Condiments",
+      "brand": "MDH",
+      "model": "Chana Masala 100g",
+      "imageUrl": "https://picsum.photos/seed/mdh-chana-masala/400/400",
+      "price": 65.0,
+      "mrp": 78.0,
+      "currency": "INR",
+      "weight": "100g",
+      "stockQuantity": 600,
+      "averageRating": 4.6,
+      "reviewCount": 8932,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Spice Mix"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "100g"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        },
+        {
+          "attributeKey": "Usage",
+          "attributeValue": "Chana/Chickpea Curry"
+        }
+      ]
+    },
+    {
+      "title": "Nestle Maggi 2-Minute Noodles",
+      "description": "Nestle Maggi 2-Minute Noodles are the iconic instant noodles beloved across India. Made with real vegetables and special Masala, they cook in just 2 minutes for a quick satisfying snack any time.",
+      "category": "GROCERY",
+      "subCategory": "Ready to Cook",
+      "brand": "Nestle",
+      "model": "Maggi Masala 12-Pack",
+      "imageUrl": "https://picsum.photos/seed/nestle-maggi-noodles/400/400",
+      "price": 168.0,
+      "mrp": 180.0,
+      "currency": "INR",
+      "weight": "840g (12x70g)",
+      "stockQuantity": 700,
+      "averageRating": 4.5,
+      "reviewCount": 45678,
+      "attributes": [
+        {
+          "attributeKey": "Flavour",
+          "attributeValue": "Masala"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "12 Packets x 70g"
+        },
+        {
+          "attributeKey": "Cook Time",
+          "attributeValue": "2 Minutes"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Saffola Active Refined Blended Oil",
+      "description": "Saffola Active is a scientifically formulated blend of rice bran and soybean oils. Rich in Oryzanol, Vitamin E and MUFA that help maintain good cholesterol. Light taste for everyday healthy cooking.",
+      "category": "GROCERY",
+      "subCategory": "Staples",
+      "brand": "Saffola",
+      "model": "Active Blended Oil 2L",
+      "imageUrl": "https://picsum.photos/seed/saffola-active-oil/400/400",
+      "price": 395.0,
+      "mrp": 450.0,
+      "currency": "INR",
+      "weight": "2 Litres",
+      "stockQuantity": 280,
+      "averageRating": 4.3,
+      "reviewCount": 6543,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Blended Refined Oil"
+        },
+        {
+          "attributeKey": "Blend",
+          "attributeValue": "Rice Bran + Soybean"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "2 Litres"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Britannia Good Day Cashew Butter Cookies",
+      "description": "Britannia Good Day cookies are made with real cashews for a rich, buttery flavour. Crunchy texture and generous cashew topping make them an irresistible snack for the whole family.",
+      "category": "GROCERY",
+      "subCategory": "Snacks",
+      "brand": "Britannia",
+      "model": "Good Day Cashew 600g",
+      "imageUrl": "https://picsum.photos/seed/britannia-good-day-cookies/400/400",
+      "price": 95.0,
+      "mrp": 110.0,
+      "currency": "INR",
+      "weight": "600g",
+      "stockQuantity": 500,
+      "averageRating": 4.5,
+      "reviewCount": 21345,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Butter Cookies"
+        },
+        {
+          "attributeKey": "Flavour",
+          "attributeValue": "Cashew"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "600g"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Amul Full Cream Milk Powder",
+      "description": "Amul Full Cream Milk Powder is spray-dried for freshness and packed with nutrients. High protein content, rich taste suitable for preparing tea, coffee, sweets and various culinary preparations.",
+      "category": "GROCERY",
+      "subCategory": "Dairy & Eggs",
+      "brand": "Amul",
+      "model": "Full Cream Milk Powder 500g",
+      "imageUrl": "https://picsum.photos/seed/amul-milk-powder/400/400",
+      "price": 285.0,
+      "mrp": 310.0,
+      "currency": "INR",
+      "weight": "500g",
+      "stockQuantity": 320,
+      "averageRating": 4.4,
+      "reviewCount": 7654,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Full Cream Milk Powder"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "500g"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "Store in cool dry place"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Dabur Honey Pure",
+      "description": "Dabur Honey is 100% pure, natural honey with no added sugar or preservatives. Rich in antioxidants, enzymes and minerals. Perfect for boosting immunity, adding to tea, or as a natural sweetener.",
+      "category": "GROCERY",
+      "subCategory": "Organic",
+      "brand": "Dabur",
+      "model": "Pure Honey 500g",
+      "imageUrl": "https://picsum.photos/seed/dabur-honey-pure/400/400",
+      "price": 259.0,
+      "mrp": 310.0,
+      "currency": "INR",
+      "weight": "500g",
+      "stockQuantity": 380,
+      "averageRating": 4.5,
+      "reviewCount": 14567,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Pure Natural Honey"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "500g"
+        },
+        {
+          "attributeKey": "Additives",
+          "attributeValue": "No Added Sugar or Preservatives"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Everest Rajwadi Garam Masala",
+      "description": "Everest Rajwadi Garam Masala is a premium blend of 21 authentic spices for a royal taste. Roasted and ground to perfection, it adds depth and warmth to curries, biryanis and all Indian dishes.",
+      "category": "GROCERY",
+      "subCategory": "Spices & Condiments",
+      "brand": "Everest",
+      "model": "Rajwadi Garam Masala 100g",
+      "imageUrl": "https://picsum.photos/seed/everest-garam-masala/400/400",
+      "price": 110.0,
+      "mrp": 130.0,
+      "currency": "INR",
+      "weight": "100g",
+      "stockQuantity": 550,
+      "averageRating": 4.6,
+      "reviewCount": 9876,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Spice Blend"
+        },
+        {
+          "attributeKey": "Spices",
+          "attributeValue": "21 Authentic Spices"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "100g"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Patanjali Desi Ghee",
+      "description": "Patanjali Desi Ghee is prepared from pure cow milk using traditional bilona method. Rich in Vitamin A, D, E and K with anti-inflammatory properties. Adds a rich aroma to dals, rotis and sweets.",
+      "category": "GROCERY",
+      "subCategory": "Dairy & Eggs",
+      "brand": "Patanjali",
+      "model": "Desi Ghee 1kg",
+      "imageUrl": "https://picsum.photos/seed/patanjali-desi-ghee/400/400",
+      "price": 599.0,
+      "mrp": 650.0,
+      "currency": "INR",
+      "weight": "1kg",
+      "stockQuantity": 250,
+      "averageRating": 4.3,
+      "reviewCount": 11234,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Desi Cow Ghee"
+        },
+        {
+          "attributeKey": "Method",
+          "attributeValue": "Traditional Bilona"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "1kg"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Nescafe Classic Instant Coffee",
+      "description": "Nescafe Classic Instant Coffee is made from 100% pure coffee with a rich, bold flavour profile. The unique freeze-drying process preserves the natural coffee aroma for a perfect cup every time.",
+      "category": "GROCERY",
+      "subCategory": "Beverages",
+      "brand": "Nestle",
+      "model": "Nescafe Classic 200g",
+      "imageUrl": "https://picsum.photos/seed/nescafe-classic-coffee/400/400",
+      "price": 449.0,
+      "mrp": 490.0,
+      "currency": "INR",
+      "weight": "200g",
+      "stockQuantity": 420,
+      "averageRating": 4.5,
+      "reviewCount": 19876,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Instant Coffee"
+        },
+        {
+          "attributeKey": "Coffee",
+          "attributeValue": "100% Pure Freeze-Dried"
+        },
+        {
+          "attributeKey": "Pack Size",
+          "attributeValue": "200g"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Lakme Absolute Matte Revolution Lipstick",
+      "description": "Lakme Absolute Matte Revolution Lipstick delivers intense colour with a flawless matte finish that lasts up to 16 hours. Enriched with Vitamin E for a smooth, comfortable wear that won't dry your lips.",
+      "category": "BEAUTY",
+      "subCategory": "Makeup",
+      "brand": "Lakme",
+      "model": "Matte Revolution 3.5g",
+      "imageUrl": "https://picsum.photos/seed/lakme-matte-lipstick/400/400",
+      "price": 449.0,
+      "mrp": 560.0,
+      "currency": "INR",
+      "color": "Rouge Romance",
+      "weight": "3.5g",
+      "stockQuantity": 300,
+      "averageRating": 4.3,
+      "reviewCount": 8765,
+      "attributes": [
+        {
+          "attributeKey": "Finish",
+          "attributeValue": "Matte"
+        },
+        {
+          "attributeKey": "Longevity",
+          "attributeValue": "16 Hours"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Vitamin E"
+        },
+        {
+          "attributeKey": "Weight",
+          "attributeValue": "3.5g"
+        },
+        {
+          "attributeKey": "Suitable For",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Himalaya Purifying Neem Face Wash",
+      "description": "Himalaya Purifying Neem Face Wash with Neem and Turmeric is a soap-free daily face wash that purifies skin and prevents pimples. Gentle formula suitable for oily and acne-prone skin for a clear complexion.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Himalaya",
+      "model": "Neem Face Wash 150ml",
+      "imageUrl": "https://picsum.photos/seed/himalaya-neem-facewash/400/400",
+      "price": 115.0,
+      "mrp": 135.0,
+      "currency": "INR",
+      "weight": "150ml",
+      "stockQuantity": 500,
+      "averageRating": 4.4,
+      "reviewCount": 23456,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "Oily, Acne-Prone"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Neem + Turmeric"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "150ml"
+        },
+        {
+          "attributeKey": "Formula",
+          "attributeValue": "Soap-Free"
+        },
+        {
+          "attributeKey": "Suitable For",
+          "attributeValue": "Daily Use"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Mamaearth Vitamin C Moisturizer",
+      "description": "Mamaearth Vitamin C Moisturizer with SPF 20 brightens skin tone and evens out complexion. Made with natural ingredients including Vitamin C and Turmeric that nourish and protect skin from sun damage.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Mamaearth",
+      "model": "Vitamin C Moisturizer 80g",
+      "imageUrl": "https://picsum.photos/seed/mamaearth-vitamin-c-moisturizer/400/400",
+      "price": 349.0,
+      "mrp": 449.0,
+      "currency": "INR",
+      "weight": "80g",
+      "stockQuantity": 350,
+      "averageRating": 4.2,
+      "reviewCount": 12345,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Vitamin C + Turmeric"
+        },
+        {
+          "attributeKey": "SPF",
+          "attributeValue": "SPF 20"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "80g"
+        },
+        {
+          "attributeKey": "Free From",
+          "attributeValue": "Paraben, SLS, Mineral Oil"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Dove Intense Repair Shampoo",
+      "description": "Dove Intense Repair Shampoo with Keratin Actives repairs damage from root to tip. Nutritive serum technology penetrates each strand to strengthen hair and reduce breakage for silkier, smoother hair.",
+      "category": "BEAUTY",
+      "subCategory": "Haircare",
+      "brand": "Dove",
+      "model": "Intense Repair Shampoo 650ml",
+      "imageUrl": "https://picsum.photos/seed/dove-intense-repair-shampoo/400/400",
+      "price": 349.0,
+      "mrp": 415.0,
+      "currency": "INR",
+      "weight": "650ml",
+      "stockQuantity": 280,
+      "averageRating": 4.4,
+      "reviewCount": 15678,
+      "attributes": [
+        {
+          "attributeKey": "Hair Type",
+          "attributeValue": "Damaged, Dry"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Keratin Actives"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "650ml"
+        },
+        {
+          "attributeKey": "Benefits",
+          "attributeValue": "Repairs Damage, Reduces Breakage"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Nivea Soft Light Moisturizer",
+      "description": "Nivea Soft Light Moisturizer is enriched with Vitamin E and Jojoba Oil for deep moisturization. Light, non-greasy formula absorbs instantly for soft, supple skin. Suitable for face, hands and body.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Nivea",
+      "model": "Soft Moisturizer 200ml",
+      "imageUrl": "https://picsum.photos/seed/nivea-soft-moisturizer/400/400",
+      "price": 295.0,
+      "mrp": 360.0,
+      "currency": "INR",
+      "weight": "200ml",
+      "stockQuantity": 400,
+      "averageRating": 4.5,
+      "reviewCount": 18934,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Vitamin E + Jojoba Oil"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "200ml"
+        },
+        {
+          "attributeKey": "Texture",
+          "attributeValue": "Non-Greasy Light"
+        },
+        {
+          "attributeKey": "Suitable For",
+          "attributeValue": "Face, Hands, Body"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Garnier Micellar Cleansing Water",
+      "description": "Garnier Micellar Cleansing Water with micelles gently and effectively removes waterproof makeup and impurities without rubbing. No-rinse formula leaves skin clean, soft and perfectly refreshed.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Garnier",
+      "model": "Micellar Water 400ml",
+      "imageUrl": "https://picsum.photos/seed/garnier-micellar-water/400/400",
+      "price": 449.0,
+      "mrp": 545.0,
+      "currency": "INR",
+      "weight": "400ml",
+      "stockQuantity": 320,
+      "averageRating": 4.3,
+      "reviewCount": 10234,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types including Sensitive"
+        },
+        {
+          "attributeKey": "Technology",
+          "attributeValue": "Micellar"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "400ml"
+        },
+        {
+          "attributeKey": "Usage",
+          "attributeValue": "Removes Waterproof Makeup"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "L'Oreal Paris True Match Foundation",
+      "description": "L'Oreal Paris True Match Super Blendable Liquid Foundation matches skin tone with 33 customizable shades. Micro-matched pigments ensure seamless, natural-looking coverage that lasts all day.",
+      "category": "BEAUTY",
+      "subCategory": "Makeup",
+      "brand": "LOreal",
+      "model": "True Match Foundation W2",
+      "imageUrl": "https://picsum.photos/seed/loreal-true-match-foundation/400/400",
+      "price": 849.0,
+      "mrp": 1100.0,
+      "currency": "INR",
+      "weight": "30ml",
+      "stockQuantity": 200,
+      "averageRating": 4.2,
+      "reviewCount": 6789,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Coverage",
+          "attributeValue": "Medium to Full"
+        },
+        {
+          "attributeKey": "Finish",
+          "attributeValue": "Natural"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "30ml"
+        },
+        {
+          "attributeKey": "SPF",
+          "attributeValue": "No SPF"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "WOW Skin Science Apple Cider Vinegar Shampoo",
+      "description": "WOW ACV Shampoo with Apple Cider Vinegar balances scalp pH and removes product buildup. Enriched with Argan Oil and Sweet Almond Oil to strengthen hair and add shine. Sulfate-free formula.",
+      "category": "BEAUTY",
+      "subCategory": "Haircare",
+      "brand": "WOW",
+      "model": "ACV Shampoo 300ml",
+      "imageUrl": "https://picsum.photos/seed/wow-acv-shampoo/400/400",
+      "price": 599.0,
+      "mrp": 799.0,
+      "currency": "INR",
+      "weight": "300ml",
+      "stockQuantity": 250,
+      "averageRating": 4.3,
+      "reviewCount": 9876,
+      "attributes": [
+        {
+          "attributeKey": "Hair Type",
+          "attributeValue": "All Hair Types"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Apple Cider Vinegar + Argan Oil"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "300ml"
+        },
+        {
+          "attributeKey": "Free From",
+          "attributeValue": "Sulfate, Paraben"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Plum E-Luminence Simply Superior Moisturizer",
+      "description": "Plum E-Luminence moisturizer is rich in Vitamin E and Jojoba for intense hydration. Brightens and evens skin tone with natural plant extracts. 100% vegan, cruelty-free and free from harmful chemicals.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Plum",
+      "model": "E-Luminence Moisturizer 75ml",
+      "imageUrl": "https://picsum.photos/seed/plum-e-luminence-moisturizer/400/400",
+      "price": 545.0,
+      "mrp": 645.0,
+      "currency": "INR",
+      "weight": "75ml",
+      "stockQuantity": 180,
+      "averageRating": 4.4,
+      "reviewCount": 5432,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Vitamin E + Jojoba"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "75ml"
+        },
+        {
+          "attributeKey": "Vegan",
+          "attributeValue": "Yes - 100% Vegan"
+        },
+        {
+          "attributeKey": "Free From",
+          "attributeValue": "Paraben, SLS, Phthalates"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Biotique Bio Milk Protein Whitening & Rejuvenating Face Pack",
+      "description": "Biotique Bio Milk Protein face pack combines pure milk proteins with honey and Himalayan waters to lighten skin and reduce dark spots. Provides intense nourishment for fair, glowing skin.",
+      "category": "BEAUTY",
+      "subCategory": "Skincare",
+      "brand": "Biotique",
+      "model": "Milk Protein Face Pack 75g",
+      "imageUrl": "https://picsum.photos/seed/biotique-milk-protein-face-pack/400/400",
+      "price": 225.0,
+      "mrp": 275.0,
+      "currency": "INR",
+      "weight": "75g",
+      "stockQuantity": 320,
+      "averageRating": 4.1,
+      "reviewCount": 7654,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "All Skin Types"
+        },
+        {
+          "attributeKey": "Key Ingredient",
+          "attributeValue": "Milk Protein + Honey"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "75g"
+        },
+        {
+          "attributeKey": "Benefits",
+          "attributeValue": "Whitening, Rejuvenating"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Park Avenue Voyage Eau de Parfum",
+      "description": "Park Avenue Voyage Eau de Parfum is a sophisticated fragrance with fresh top notes of bergamot and sea breeze, heart notes of cedar and vetiver, and a warm base of sandalwood and musk.",
+      "category": "BEAUTY",
+      "subCategory": "Fragrances",
+      "brand": "Park Avenue",
+      "model": "Voyage EDP 100ml",
+      "imageUrl": "https://picsum.photos/seed/park-avenue-voyage-edp/400/400",
+      "price": 599.0,
+      "mrp": 799.0,
+      "currency": "INR",
+      "weight": "100ml",
+      "stockQuantity": 150,
+      "averageRating": 4.2,
+      "reviewCount": 4321,
+      "attributes": [
+        {
+          "attributeKey": "Type",
+          "attributeValue": "Eau de Parfum"
+        },
+        {
+          "attributeKey": "Volume",
+          "attributeValue": "100ml"
+        },
+        {
+          "attributeKey": "Fragrance Family",
+          "attributeValue": "Fresh Aromatic"
+        },
+        {
+          "attributeKey": "Longevity",
+          "attributeValue": "6-8 Hours"
+        },
+        {
+          "attributeKey": "Suitable For",
+          "attributeValue": "Men"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Maybelline Fit Me Matte Poreless Powder",
+      "description": "Maybelline Fit Me Matte + Poreless Powder controls shine and minimizes the look of pores for a naturally matte finish. Micro-fine powder fits seamlessly into skin for a flawlessly smooth look.",
+      "category": "BEAUTY",
+      "subCategory": "Makeup",
+      "brand": "Maybelline",
+      "model": "Fit Me Powder 128",
+      "imageUrl": "https://picsum.photos/seed/maybelline-fitme-powder/400/400",
+      "price": 449.0,
+      "mrp": 625.0,
+      "currency": "INR",
+      "weight": "8.2g",
+      "stockQuantity": 270,
+      "averageRating": 4.3,
+      "reviewCount": 8765,
+      "attributes": [
+        {
+          "attributeKey": "Skin Type",
+          "attributeValue": "Oily, Combination"
+        },
+        {
+          "attributeKey": "Finish",
+          "attributeValue": "Matte"
+        },
+        {
+          "attributeKey": "Weight",
+          "attributeValue": "8.2g"
+        },
+        {
+          "attributeKey": "Benefits",
+          "attributeValue": "Pore Minimizing, Oil Control"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "USA"
+        }
+      ]
+    },
+    {
+      "title": "Prestige Popular Aluminium Pressure Cooker",
+      "description": "Prestige Popular Aluminium Pressure Cooker features an inner lid design for convenient use. Made from food-grade aluminium with gasket release mechanism (GRS) for safety. Suitable for gas and induction cooktops.",
+      "category": "HOME",
+      "subCategory": "Kitchen & Dining",
+      "brand": "Prestige",
+      "model": "PR20228",
+      "imageUrl": "https://picsum.photos/seed/prestige-pressure-cooker/400/400",
+      "price": 899.0,
+      "mrp": 1295.0,
+      "currency": "INR",
+      "color": "Silver",
+      "material": "Aluminium",
+      "weight": "1.1kg",
+      "stockQuantity": 200,
+      "averageRating": 4.5,
+      "reviewCount": 12456,
+      "attributes": [
+        {
+          "attributeKey": "Capacity",
+          "attributeValue": "5 Litres"
+        },
+        {
+          "attributeKey": "Material",
+          "attributeValue": "Food-grade Aluminium"
+        },
+        {
+          "attributeKey": "Lid Type",
+          "attributeValue": "Inner Lid"
+        },
+        {
+          "attributeKey": "Compatible With",
+          "attributeValue": "Gas, Induction"
+        },
+        {
+          "attributeKey": "Safety",
+          "attributeValue": "GRS Mechanism"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "5 Years"
+        }
+      ]
+    },
+    {
+      "title": "Bajaj Mixer Grinder Rex 500W",
+      "description": "Bajaj Rex 500W Mixer Grinder comes with 3 stainless steel jars for grinding, mixing and blending. Powerful 500W motor handles hard ingredients with ease. Anti-skid feet and safety lock for secure operation.",
+      "category": "HOME",
+      "subCategory": "Kitchen Appliances",
+      "brand": "Bajaj",
+      "model": "Rex 500W",
+      "imageUrl": "https://picsum.photos/seed/bajaj-mixer-grinder-rex/400/400",
+      "price": 2299.0,
+      "mrp": 3299.0,
+      "currency": "INR",
+      "color": "White",
+      "material": "ABS Plastic + Stainless Steel",
+      "stockQuantity": 100,
+      "averageRating": 4.2,
+      "reviewCount": 5678,
+      "attributes": [
+        {
+          "attributeKey": "Power",
+          "attributeValue": "500W"
+        },
+        {
+          "attributeKey": "Jars",
+          "attributeValue": "3 Stainless Steel Jars"
+        },
+        {
+          "attributeKey": "Speed Settings",
+          "attributeValue": "3"
+        },
+        {
+          "attributeKey": "Safety",
+          "attributeValue": "Safety Lock, Anti-skid Feet"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "2 Years on Motor"
+        }
+      ]
+    },
+    {
+      "title": "Solimo 100% Cotton Double Bedsheet Set",
+      "description": "Amazon Solimo bedsheet set includes 1 double bedsheet and 2 pillow covers. Made from 100% pure cotton with 186 TC for a soft, comfortable feel. Vibrant colors remain intact even after multiple washes.",
+      "category": "HOME",
+      "subCategory": "Bedding",
+      "brand": "Solimo",
+      "model": "DOMS-BDS-17",
+      "imageUrl": "https://picsum.photos/seed/solimo-cotton-bedsheet/400/400",
+      "price": 699.0,
+      "mrp": 999.0,
+      "currency": "INR",
+      "color": "Blue Geometric",
+      "material": "100% Cotton",
+      "stockQuantity": 250,
+      "averageRating": 4.2,
+      "reviewCount": 8934,
+      "attributes": [
+        {
+          "attributeKey": "Size",
+          "attributeValue": "Double Bed"
+        },
+        {
+          "attributeKey": "Thread Count",
+          "attributeValue": "186 TC"
+        },
+        {
+          "attributeKey": "Set Contents",
+          "attributeValue": "1 Bedsheet + 2 Pillow Covers"
+        },
+        {
+          "attributeKey": "Dimensions",
+          "attributeValue": "228 x 274 cm"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Godrej InterioSquare 2-Door Wardrobe",
+      "description": "Godrej Interio Square wardrobe features two doors with full-length mirror. Laminated engineered wood with ample storage including hanging rod, shelves and drawers. Pre-assembled for easy setup.",
+      "category": "HOME",
+      "subCategory": "Furniture",
+      "brand": "Godrej",
+      "model": "SVWGT020001",
+      "imageUrl": "https://picsum.photos/seed/godrej-wardrobe/400/400",
+      "price": 21990.0,
+      "mrp": 28000.0,
+      "currency": "INR",
+      "color": "Frosty White",
+      "material": "Engineered Wood",
+      "stockQuantity": 15,
+      "averageRating": 4.1,
+      "reviewCount": 1234,
+      "attributes": [
+        {
+          "attributeKey": "Doors",
+          "attributeValue": "2 with Full Mirror"
+        },
+        {
+          "attributeKey": "Dimensions",
+          "attributeValue": "90 x 52 x 190 cm (W x D x H)"
+        },
+        {
+          "attributeKey": "Storage",
+          "attributeValue": "Hanging Rod + 3 Shelves + 1 Drawer"
+        },
+        {
+          "attributeKey": "Assembly",
+          "attributeValue": "Pre-assembled"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Philips LED Bulb 12W Cool White",
+      "description": "Philips 12W LED bulb provides 1100 lumens of bright cool white light with energy savings of up to 80% vs incandescent bulbs. B22 base compatible with standard Indian fittings. Rated for 15,000 hours.",
+      "category": "HOME",
+      "subCategory": "Lighting",
+      "brand": "Philips",
+      "model": "929001180113",
+      "imageUrl": "https://picsum.photos/seed/philips-led-bulb-12w/400/400",
+      "price": 120.0,
+      "mrp": 175.0,
+      "currency": "INR",
+      "color": "Cool White 6500K",
+      "stockQuantity": 1000,
+      "averageRating": 4.4,
+      "reviewCount": 34567,
+      "attributes": [
+        {
+          "attributeKey": "Wattage",
+          "attributeValue": "12W"
+        },
+        {
+          "attributeKey": "Lumens",
+          "attributeValue": "1100 Lumens"
+        },
+        {
+          "attributeKey": "Color Temperature",
+          "attributeValue": "6500K Cool White"
+        },
+        {
+          "attributeKey": "Base Type",
+          "attributeValue": "B22"
+        },
+        {
+          "attributeKey": "Lifespan",
+          "attributeValue": "15,000 Hours"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "2 Years"
+        }
+      ]
+    },
+    {
+      "title": "Cello Opalware Dinner Set 33 Pieces",
+      "description": "Cello Opalware dinner set includes plates, bowls, cups and saucers in elegant design. Made from toughened opal glass that is chip-resistant and food-safe. Microwave and dishwasher safe for easy care.",
+      "category": "HOME",
+      "subCategory": "Kitchen & Dining",
+      "brand": "Cello",
+      "model": "OW-DELIGHT33",
+      "imageUrl": "https://picsum.photos/seed/cello-opalware-dinner-set/400/400",
+      "price": 1799.0,
+      "mrp": 2999.0,
+      "currency": "INR",
+      "color": "White with Blue Border",
+      "material": "Opal Glass",
+      "stockQuantity": 80,
+      "averageRating": 4.3,
+      "reviewCount": 3456,
+      "attributes": [
+        {
+          "attributeKey": "Pieces",
+          "attributeValue": "33 Pieces"
+        },
+        {
+          "attributeKey": "Material",
+          "attributeValue": "Toughened Opal Glass"
+        },
+        {
+          "attributeKey": "Microwave Safe",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Dishwasher Safe",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Serves",
+          "attributeValue": "6 Persons"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Milton Thermosteel Flask 500ml",
+      "description": "Milton Thermosteel Flask with double-wall stainless steel vacuum insulation keeps beverages hot for 24 hours and cold for 24 hours. Leak-proof design with wide mouth and easy-grip body.",
+      "category": "HOME",
+      "subCategory": "Kitchen & Dining",
+      "brand": "Milton",
+      "model": "THERMOSTEEL500",
+      "imageUrl": "https://picsum.photos/seed/milton-thermosteel-flask/400/400",
+      "price": 599.0,
+      "mrp": 849.0,
+      "currency": "INR",
+      "color": "Silver",
+      "material": "Stainless Steel",
+      "weight": "350g",
+      "stockQuantity": 300,
+      "averageRating": 4.4,
+      "reviewCount": 7654,
+      "attributes": [
+        {
+          "attributeKey": "Capacity",
+          "attributeValue": "500ml"
+        },
+        {
+          "attributeKey": "Insulation",
+          "attributeValue": "Hot 24hr / Cold 24hr"
+        },
+        {
+          "attributeKey": "Material",
+          "attributeValue": "Double-wall SS"
+        },
+        {
+          "attributeKey": "Leak-Proof",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "BPA Free",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Hawkins Contura Pressure Cooker 3L",
+      "description": "Hawkins Contura hard anodised pressure cooker with contura shape for improved heat distribution. Gasket release mechanism for safety. Includes trivet, separators and ladle in the box.",
+      "category": "HOME",
+      "subCategory": "Kitchen & Dining",
+      "brand": "Hawkins",
+      "model": "CB30",
+      "imageUrl": "https://picsum.photos/seed/hawkins-contura-cooker/400/400",
+      "price": 2595.0,
+      "mrp": 3195.0,
+      "currency": "INR",
+      "color": "Black",
+      "material": "Hard Anodised Aluminium",
+      "weight": "1.2kg",
+      "stockQuantity": 100,
+      "averageRating": 4.6,
+      "reviewCount": 6789,
+      "attributes": [
+        {
+          "attributeKey": "Capacity",
+          "attributeValue": "3 Litres"
+        },
+        {
+          "attributeKey": "Material",
+          "attributeValue": "Hard Anodised Aluminium"
+        },
+        {
+          "attributeKey": "Compatible With",
+          "attributeValue": "Gas, Induction"
+        },
+        {
+          "attributeKey": "In the Box",
+          "attributeValue": "Cooker, Trivet, 2 Separators, Ladle"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "5 Years"
+        }
+      ]
+    },
+    {
+      "title": "Story@Home Non-Slip Bath Mat",
+      "description": "Story@Home cotton bath mat with anti-skid rubber backing keeps you safe on wet bathroom floors. Highly absorbent microfiber surface wicks water quickly. Machine washable and fast drying.",
+      "category": "HOME",
+      "subCategory": "Bath",
+      "brand": "Solimo",
+      "model": "SHBM-2024",
+      "imageUrl": "https://picsum.photos/seed/cotton-bath-mat/400/400",
+      "price": 399.0,
+      "mrp": 599.0,
+      "currency": "INR",
+      "color": "Grey",
+      "material": "100% Cotton",
+      "stockQuantity": 200,
+      "averageRating": 4.1,
+      "reviewCount": 4321,
+      "attributes": [
+        {
+          "attributeKey": "Size",
+          "attributeValue": "50 x 75 cm"
+        },
+        {
+          "attributeKey": "Material",
+          "attributeValue": "100% Cotton"
+        },
+        {
+          "attributeKey": "Anti-Skid",
+          "attributeValue": "Yes - Rubber Backing"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Pigeon Basics Hard Anodised Non-Stick Tawa",
+      "description": "Pigeon Basics hard anodised tawa with non-stick coating for healthy cooking with minimal oil. PFOA-free coating is safe and durable. Comfortable handle stays cool while cooking on gas stove.",
+      "category": "HOME",
+      "subCategory": "Kitchen & Dining",
+      "brand": "Pigeon",
+      "model": "12151",
+      "imageUrl": "https://picsum.photos/seed/pigeon-nonstick-tawa/400/400",
+      "price": 649.0,
+      "mrp": 999.0,
+      "currency": "INR",
+      "color": "Black",
+      "material": "Hard Anodised Aluminium",
+      "weight": "700g",
+      "stockQuantity": 180,
+      "averageRating": 4.2,
+      "reviewCount": 5678,
+      "attributes": [
+        {
+          "attributeKey": "Diameter",
+          "attributeValue": "28cm"
+        },
+        {
+          "attributeKey": "Coating",
+          "attributeValue": "Non-Stick PFOA-Free"
+        },
+        {
+          "attributeKey": "Compatible With",
+          "attributeValue": "Gas Only"
+        },
+        {
+          "attributeKey": "Thickness",
+          "attributeValue": "3mm"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "2 Years"
+        }
+      ]
+    },
+    {
+      "title": "Amazon Basics Microfiber Pillow 2-Pack",
+      "description": "Amazon Basics microfiber pillows filled with hollow conjugate fibre for supportive and comfortable sleep. Hypoallergenic, breathable cover promotes airflow. Available in standard size for all pillowcases.",
+      "category": "HOME",
+      "subCategory": "Bedding",
+      "brand": "Solimo",
+      "model": "ABPW-STD-2PK",
+      "imageUrl": "https://picsum.photos/seed/amazon-basics-pillow/400/400",
+      "price": 799.0,
+      "mrp": 1199.0,
+      "currency": "INR",
+      "color": "White",
+      "material": "Microfiber Shell with Hollow Fibre Fill",
+      "stockQuantity": 300,
+      "averageRating": 4.3,
+      "reviewCount": 8765,
+      "attributes": [
+        {
+          "attributeKey": "Pack",
+          "attributeValue": "2 Pillows"
+        },
+        {
+          "attributeKey": "Size",
+          "attributeValue": "Standard - 67 x 42 cm"
+        },
+        {
+          "attributeKey": "Fill",
+          "attributeValue": "Hollow Conjugate Fibre"
+        },
+        {
+          "attributeKey": "Hypoallergenic",
+          "attributeValue": "Yes"
+        },
+        {
+          "attributeKey": "Care",
+          "attributeValue": "Machine Wash"
+        },
+        {
+          "attributeKey": "Country of Origin",
+          "attributeValue": "India"
+        }
+      ]
+    },
+    {
+      "title": "Nilkamal Plastic Storage Cabinet",
+      "description": "Nilkamal storage cabinet with 2 doors and adjustable shelves provides versatile storage for any room. Durable virgin plastic construction with smooth finish. Lightweight, portable and easy to clean.",
+      "category": "HOME",
+      "subCategory": "Storage",
+      "brand": "Nilkamal",
+      "model": "FREEDOM MINI-1",
+      "imageUrl": "https://picsum.photos/seed/nilkamal-storage-cabinet/400/400",
+      "price": 2499.0,
+      "mrp": 3199.0,
+      "currency": "INR",
+      "color": "Cumin/Camelia",
+      "material": "Virgin Plastic",
+      "stockQuantity": 50,
+      "averageRating": 4.0,
+      "reviewCount": 2345,
+      "attributes": [
+        {
+          "attributeKey": "Dimensions",
+          "attributeValue": "60 x 40 x 138 cm (W x D x H)"
+        },
+        {
+          "attributeKey": "Shelves",
+          "attributeValue": "3 Adjustable"
+        },
+        {
+          "attributeKey": "Load Capacity",
+          "attributeValue": "30kg per shelf"
+        },
+        {
+          "attributeKey": "Assembly",
+          "attributeValue": "Self Assembly"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "1 Year"
+        }
+      ]
+    },
+    {
+      "title": "Havells Cista 1200mm Ceiling Fan",
+      "description": "Havells Cista ceiling fan with BLDC motor consumes only 35W for energy-efficient cooling. Smart compatible with remote control and voice command capability. Anti-dust and anti-rust aluminium blades.",
+      "category": "HOME",
+      "subCategory": "Lighting",
+      "brand": "Havells",
+      "model": "FHCCISTWT48",
+      "imageUrl": "https://picsum.photos/seed/havells-cista-ceiling-fan/400/400",
+      "price": 4990.0,
+      "mrp": 7000.0,
+      "currency": "INR",
+      "color": "Pearl White",
+      "material": "Aluminium Blades, ABS Body",
+      "stockQuantity": 60,
+      "averageRating": 4.4,
+      "reviewCount": 3456,
+      "attributes": [
+        {
+          "attributeKey": "Blade Size",
+          "attributeValue": "1200mm"
+        },
+        {
+          "attributeKey": "Power",
+          "attributeValue": "35W BLDC Motor"
+        },
+        {
+          "attributeKey": "Speed Settings",
+          "attributeValue": "6 with Remote"
+        },
+        {
+          "attributeKey": "Smart Compatible",
+          "attributeValue": "Yes - Voice Control"
+        },
+        {
+          "attributeKey": "Air Delivery",
+          "attributeValue": "220 CMM"
+        },
+        {
+          "attributeKey": "Warranty",
+          "attributeValue": "2 Years"
+        }
+      ]
+    }
+  ]
+}
