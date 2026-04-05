@@ -24,7 +24,7 @@ import java.util.List;
  * Idempotent - skips restaurants that already exist by swiggyId.
  */
 @Component
-@Order(3)
+@Order(4)
 @Slf4j
 @RequiredArgsConstructor
 public class SampleRestaurantDataSeeder implements ApplicationRunner {

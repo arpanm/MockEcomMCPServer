@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * Runs after CityDataInitializer (order 2 vs default order).
  */
 @Component
-@Order(4)
+@Order(5)
 @Slf4j
 @RequiredArgsConstructor
 public class ScraperAutoStartRunner implements ApplicationRunner {

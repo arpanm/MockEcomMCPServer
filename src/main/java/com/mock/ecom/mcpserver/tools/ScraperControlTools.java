@@ -1,5 +1,6 @@
 package com.mock.ecom.mcpserver.tools;
 
+import com.mock.ecom.mcpserver.service.ProductSeedExportService;
 import com.mock.ecom.mcpserver.service.RestaurantQueryService;
 import com.mock.ecom.mcpserver.service.SeedDataExportService;
 import com.mock.ecom.mcpserver.service.SwiggyScraperService;
@@ -23,6 +24,7 @@ public class ScraperControlTools {
     private final SwiggyScraperService scraperService;
     private final RestaurantQueryService queryService;
     private final SeedDataExportService exportService;
+    private final ProductSeedExportService productSeedExportService;
     private final ToolResponseHelper helper;
 
     @Tool(description = "Get the current status of the Swiggy scraper including total cities, scraped cities, total restaurants collected, and how many restaurants have menu data. Use this to monitor scraping progress.")
@@ -133,6 +135,27 @@ public class ScraperControlTools {
             return helper.toJson(response);
         } catch (Exception e) {
             log.error("[Tool] scrapeRestaurantMenu error: {}", e.getMessage(), e);
+            return helper.error(e.getMessage());
+        }
+    }
+
+    @Tool(description = "Export all products and their attributes to a portable JSON seed file at ./seed-export/products-seed.json. After generating products via LLM or search, call this tool, then copy the file to src/main/resources/db/seed/products-seed.json and commit it. New environments will automatically load this product data on startup without needing to re-generate.")
+    public String exportProductSeedData() {
+        try {
+            log.info("[Tool] exportProductSeedData");
+            String filePath = productSeedExportService.exportToFile();
+            Map<String, Object> response = new LinkedHashMap<>();
+            response.put("status", "success");
+            response.put("exportedFile", filePath);
+            response.put("nextSteps", java.util.List.of(
+                    "1. Copy " + filePath + " to src/main/resources/db/seed/products-seed.json",
+                    "2. Rebuild the project: mvn clean package -DskipTests",
+                    "3. Commit and push: git add src/main/resources/db/seed/products-seed.json && git commit -m 'Add product seed data'",
+                    "4. New environments will auto-load this data on startup"
+            ));
+            return helper.toJson(response);
+        } catch (Exception e) {
+            log.error("[Tool] exportProductSeedData error: {}", e.getMessage(), e);
             return helper.error(e.getMessage());
         }
     }
