@@ -22,7 +22,9 @@ public class McpToolsConfig {
             ShipmentTools shipmentTools,
             TicketTools ticketTools,
             ReviewTools reviewTools,
-            WishlistTools wishlistTools) {
+            WishlistTools wishlistTools,
+            RestaurantTools restaurantTools,
+            ScraperControlTools scraperControlTools) {
         return MethodToolCallbackProvider.builder()
                 .toolObjects(
                         productSearchTools,
@@ -36,7 +38,9 @@ public class McpToolsConfig {
                         shipmentTools,
                         ticketTools,
                         reviewTools,
-                        wishlistTools)
+                        wishlistTools,
+                        restaurantTools,
+                        scraperControlTools)
                 .build();
     }
 }
